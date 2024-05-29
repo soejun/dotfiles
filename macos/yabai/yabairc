@@ -1,0 +1,79 @@
+#!/bin/bash
+
+
+sudo yabai --load-sa
+
+# Signal hooks
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+
+BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
+
+GENERAL=(
+	external_bar all:"${BAR_HEIGHT}":0
+	split_type auto
+	split_ratio 0.5
+	auto_balance off
+	insert_feedback_color 0xff7793d1
+)
+
+WINDOWS=(
+	window_placement second_child
+	window_topmost on
+	window_shadow float
+	window_opacity on
+	active_window_opacity 1.0
+	normal_window_opacity 0.9
+	window_animation_duration 0.0
+	window_origin_display focused
+	window_opacity_duration 0.15
+)
+
+# following gives best flushness for lualine and kitty
+LAYOUT=(
+	layout bsp
+	top_padding 16
+	bottom_padding 8
+	left_padding 16
+	right_padding 16
+	window_gap 16
+)
+
+# mouse settings
+MOUSE=(
+	mouse_modifier alt
+	mouse_action1 move
+	mouse_action2 resize
+	mouse_drop_action swap
+	focus_follows_mouse autoraise
+	mouse_follows_focus off
+)
+
+# disable specific apps
+# yabai -m query --windows to find out the actual app name to put in there
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^FaceTime$" manage=off
+yabai -m rule --add app="^MyWallpaper$" manage=off
+yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app="^Steam Helper$" manage=off
+
+yabai -m config "${GENERAL[@]}"
+yabai -m config "${WINDOWS[@]}"
+yabai -m config "${LAYOUT[@]}"
+yabai -m config "${MOUSE[@]}"
+
+borders active_color=0xff7793d1 inactive_color=0x00000000 width=3.0 style=round  hidpi=on order=above &
+
+#active_color=0xff7793d1
+#inactive_color=0xff5e6798
+#
+# transparent
+# inactive_color=0x00000000
+#
+# kind of grey
+# inactive_color=0xff414550
