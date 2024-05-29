@@ -1,0 +1,13 @@
+show=drun
+term=kitty
+print_command=true
+always_parse_args=true
+allow_images = true
+image_size = 64
+width = 750
+height = 400
+insensitive = true
+mode = drun,run
+columns = 1
+padding = 5
+lines = 6

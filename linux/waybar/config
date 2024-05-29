@@ -1,0 +1,85 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window",
+    "sway/mode"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+  "height": 32,
+  "sway/window": {
+    "max-length": 50
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 10
+  },
+  "cpu": {
+    "interval": 15,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "on-click": "pavucontrol",
+    "levels": {
+      "low": 30,
+      "medium": 70,
+      "high": 100
+    }
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "{ifname}",
+    "format-disconnected": "",
+    "max-length": 50,
+    "on-click": "kitty -e 'nmtui'",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ]
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "format": "{:%a, %d. %b  %I:%M %p}"
+  }
+}
