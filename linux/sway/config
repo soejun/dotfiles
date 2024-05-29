@@ -6,7 +6,9 @@
 
 
 ### Output configuration
-output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
+# output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
+# output * bg /home/wchan/Pictures/05212024_walls/path_to_peace.jpg fill
+output * bg /home/wchan/Pictures/cat-sound.png fill
 
 ### Idle configuration
 #
@@ -22,7 +24,63 @@ output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 
+### Monitor Setup
 
+# Monitor Setup
+#
+#                                      +------+
+#                                      |      |
+#                                      |      |
+#                                      |      |
+#                                      |      |
+#                                      |      |
+#                                      |      |
+#                                      |      |
+#                                      |      |
+#     +-------------------------+      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     |                         |      |      |
+#     +-------------------------+      |      |
+#  DP-1 2560x1440 (Landscape)          |      |
+#                                      |      |
+#                                      |      |
+#                                      +------+
+#                                HDMI-A-1 1440x2560 (Portrait)
+#
+# Monitor Configuration
+
+## Monitor-1 Landscape and Monitor 2 Portrait (Right)
+output DP-1 resolution 2560x1440 position 0,0
+output HDMI-A-1 resolution 2560x1440 transform 90
+# unfortunately position i believe is broken
+# position 2560,-480
+
+## Multiple Monitor Workspace Setup
+
+set $output-primary DP-1
+set $output-secondary HDMI-A-1
+
+## workspace to displays
+
+### primary display (landscape)
+workspace 1 output $output-primary
+workspace 2 output $output-primary
+workspace 3 output $output-primary
+workspace 4 output $output-primary
+workspace 5 output $output-primary
+
+### secondary display (portrait)
+workspace 6 output $output-secondary
+workspace 7 output $output-secondary
+workspace 8 output $output-secondary
+workspace 9 output $output-secondary
+workspace 10 output $output-secondary
 
 
 ### Input configuration
@@ -37,6 +95,16 @@ input "type:keyboard" {
 	xkb_layout us
   xkb_options "ctrl:nocaps, ctrl:swap_lalt_lctl_lwin"
 }
+
+## set up mouse behavior
+# Enable natural scrolling for the UNIMOUSE
+input "2867:4181:Contour_Design_UNIMOUSE" {
+    natural_scroll enabled
+}
+
+# Disable the middle mouse button action
+# no map so it won't override
+exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1 0 3
 
 ## set up touchpad behavior
 	input "type:touchpad"	{
@@ -90,6 +158,10 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 	  bindsym $mod+Shift+e exec ~/.config/sway/swaypoweroff.sh
+
+    # Lock sway
+    bindsym $mod+alt+l exec ~/.config/sway/lock.sh
+
 #
 # Moving around:
 #
@@ -129,22 +201,24 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     bindsym ctrl+9 workspace number 9
     bindsym ctrl+0 workspace number 10
     # Move focused container to workspace and switch to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym ctrl+Shift+1 move container to workspace number 1
+    bindsym ctrl+Shift+2 move container to workspace number 2
+    bindsym ctrl+Shift+3 move container to workspace number 3
+    bindsym ctrl+Shift+4 move container to workspace number 4
+    bindsym ctrl+Shift+5 move container to workspace number 5
+    bindsym ctrl+Shift+6 move container to workspace number 6
+    bindsym ctrl+Shift+7 move container to workspace number 7
+    bindsym ctrl+Shift+8 move container to workspace number 8
+    bindsym ctrl+Shift+9 move container to workspace number 9
+    bindsym ctrl+Shift+0 move container to workspace number 10
 #
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
+    # This is for opening up new windows of the same container
+    # i.e. if firefox is focused and you do splith and do ctrl+n it'll open in that orientation
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
@@ -186,21 +260,21 @@ mode "resize" {
     # up will shrink the containers height
     # down will grow the containers height
     bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
+    bindsym $up resize grow height 10px
+    bindsym $down resize shrink height 10px
     bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
+    bindsym Up resize grow height 10px
+    bindsym Down resize shrink height 10px
     bindsym Right resize grow width 10px
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r modl "resize"
+bindsym $mod+r mode "resize"
 
 #
 # Volume Control - pipewire and pamixer
@@ -238,8 +312,12 @@ gaps outer 3
 
 # exec_always nwg-panel
 # include /etc/sway/config.d/*
+
+# Set the default border width for all windows
 default_border pixel
+# Set the border colors for focused windows
 client.focused #7793d1 #7793d1 #181926 #7793d1
+# focus on border thickness later
 
 #
 # Exec commands - probably comment out most

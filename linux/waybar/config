@@ -49,7 +49,7 @@
   },
   "network": {
     "format-wifi": "{icon}",
-    "format-ethernet": "{ifname}",
+    "format-ethernet": "",
     "format-disconnected": "",
     "max-length": 50,
     "on-click": "kitty -e 'nmtui'",
