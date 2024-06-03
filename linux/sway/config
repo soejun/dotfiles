@@ -131,7 +131,8 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
    # Start a terminal
    bindsym $mod+Return exec $term
 
-	 bindsym $mod+shift+s exec "kitty /home/hermes/.config/sway/config"
+   # unneeded, we have never used this i'm pretty sure
+	 # bindsym $mod+shift+s exec "kitty /home/hermes/.config/sway/config"
 
     # Kill focused window
     bindsym $mod+q kill
@@ -139,11 +140,17 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # Start your launcher
     bindsym alt+space exec $menu
 
-	# Screenshot utils
-	bindsym Print exec grimshot copy screen
-	bindsym Shift+Print exec grimshot copy area
-	bindsym print+alt exec grimshot save screen
-	bindsym $mod+print exec grimshot copy window
+    # Screenshot utils
+    # Make this similar to macOS bindings, update karabiner accordingly
+
+    # Full screen screenshot to clipboard
+    bindsym $mod+Shift+s exec grimshot copy screen
+    # Area screenshot to clipboard
+    bindsym $mod+Shift+a exec grimshot copy area
+    # Full screen screenshot to file
+    bindsym $mod+Shift+Alt+s exec grimshot save screen
+    # Window screenshot to clipboard
+    bindsym $mod+Shift+w exec grimshot copy window
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -183,10 +190,11 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    # Comment out, we don't really need this and it'll free stuff up
+    # bindsym $mod+Shift+Left move left
+    # bindsym $mod+Shift+Down move down
+    # bindsym $mod+Shift+Up move up
+    # bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
