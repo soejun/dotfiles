@@ -8,7 +8,7 @@
 ### Output configuration
 # output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
 # output * bg /home/wchan/Pictures/05212024_walls/path_to_peace.jpg fill
-output * bg /home/wchan/Pictures/cat-sound.png fill
+output * bg /home/wchan/Pictures/mountain_views.png fill
 
 ### Idle configuration
 #
@@ -171,10 +171,11 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right] (Move focus to another window ("cult of vim" version))
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    # We're gonna comment this out so we can use our Win11 virtual machine bindings (hopefully)
+    # bindsym $mod+Left focus left
+    # bindsym $mod+Down focus down
+    # bindsym $mod+Up focus up
+    # bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift (Move the the window ("cult of vim" version))
     bindsym $mod+Shift+$left move left

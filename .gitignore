@@ -1,4 +1,7 @@
 macos/.DS_Store
 .DS_Store
-karabiner/assets/complex_modifications/1717265706.json
-karabiner/automatic_backups/karabiner_20240601.json
+macos/karabiner/assets/
+macos/karabiner/automatic_backups/
+logfile
+
+
