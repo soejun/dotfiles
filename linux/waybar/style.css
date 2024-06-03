@@ -27,17 +27,18 @@
 @define-color overlay0 #6e738d;
 @define-color surface2 #5b6078;
 @define-color surface1 #494d64;
+@define-color surface1_transparent rgba(73, 77, 100, 0.8);
 @define-color surface0 #363a4f;
 @define-color base #24273a;
-@define-color base_transparent rgba(36, 39, 58, 0.8);
+@define-color base_transparent rgba(36, 39, 58, 0.9);
 @define-color mantle #1e2030;
 @define-color crust #181926;
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-  font-family: 'Material Design Icons', 'NerdFonts', FontAwesome, 'Fira Code',
-    sans-serif;
+  /* font-family: 'Material Design Icons', 'NerdFonts', FontAwesome, 'Fira Code', sans-serif; */
+  font-family: 'FiraCode Nerd Font', 'Fira Code', 'Material Design Icons', 'NerdFonts', 'FontAwesome', sans-serif;
   font-size: 13px;
 }
 
@@ -45,7 +46,6 @@
   margin: 4px;
   padding: 3px;
   background-color: rgba(0, 0, 0, 0);
-  /* background-color: @surface0; */
   border-radius: 2rem;
 }
 
@@ -57,7 +57,6 @@
 
 window#waybar {
   background-color: @base_transparent;
-  /* background-color: rgba(0,0,0,0); */
   color: @text;
   transition-property: background-color;
   transition-duration: 0.25s;
@@ -69,23 +68,18 @@ window#waybar.hidden {
 
 window#waybar.empty {
   background-color: @base_transparent;
-  /* background-color: transparent; */
 }
 
 #workspaces {
-  margin: 4px;
-  padding: 3px;
-  /* background-color: @surface0; */
-  background-color: transparent;
-  border-radius: 2rem;
+  margin: 8px;
+  padding: 2px;
+  background-color: @surface1;
+  border-radius: 1rem;
 }
 
 #workspaces button {
-  padding-top: 0px;
-  padding-bottom: 0px;
   padding: 0px;
   margin: 2px;
-  /* background-color: @surface0; */
   background-color: transparent;
   color: @text;
 }
@@ -96,7 +90,7 @@ window#waybar.empty {
 }
 
 #workspaces button.focused {
-  color: @blue;
+  color: @red;
 }
 
 #workspaces button.urgent {
@@ -142,8 +136,8 @@ window#waybar.empty #window {
 }
 
 #clock {
+  padding-top: 2px;
   background-color: transparent;
-  /* background-color: rgba(0,0,0,0); */
   /* background-color: @surface0; */
 }
 
@@ -181,13 +175,12 @@ label:focus {
 }
 
 #cpu {
+  padding-top: 1px;
   background-color: transparent;
-  /* background-color: @surface0; */
 }
 
 #memory {
   background-color: transparent;
-  /* background-color: @surface0; */
 }
 
 #disk {
@@ -199,7 +192,7 @@ label:focus {
 }
 
 #network {
-  /* background-color: @surface0; */
+  padding-top: 1px;
   background-color: transparent;
 }
 
@@ -209,15 +202,14 @@ label:focus {
 }
 
 #pulseaudio {
-  /* background-color: @surface0; */
   background-color: transparent;
   color: @text;
 }
 
 #pulseaudio.muted {
   background-color: transparent;
-  /* background-color: @crust; */
   color: @red;
+  padding-top: 1px;
 }
 
 #custom-media {

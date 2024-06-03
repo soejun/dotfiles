@@ -16,29 +16,32 @@
     "network",
     "battery"
   ],
-  "height": 32,
+  "height": 40,
   "sway/window": {
+    "format": "<span size=\"medium\" font_weight=\"600\">{}</span>",
     "max-length": 50
   },
-  "sway/workspaces": {},
+  "sway/workspaces": {
+    "format": "<span size=\"large\" font_weight=\"600\">{}</span>"
+  },
   "tray": {
     "icon-size": 12,
     "spacing": 10
   },
   "cpu": {
     "interval": 15,
-    "format": " {}%",
+    "format": "<span rise=\"-.5pt\" color=\"#a6da95\"> </span><span font_weight=\"600\" rise=\"-1pt\">{}%</span>",
     "max-length": 10
   },
   "memory": {
     "interval": 30,
-    "format": " {}%",
+    "format": "<span color=\"#8aadf4\" size=\"x-large\">󰍛 </span><span font_weight=\"600\" rise=\"1.5pt\">{}%</span>",
     "max-length": 10
   },
   "pulseaudio": {
-    "format": "{icon}",
+    "format": "<span size=\"xx-large\">{icon}</span>",
     "format-icons": [
-      "",
+      "󰝟",
       "",
       "",
       ""
@@ -51,9 +54,9 @@
     }
   },
   "network": {
-    "format-wifi": "{icon}",
-    "format-ethernet": "",
-    "format-disconnected": "",
+    "format-wifi": "<span size=\"x-large\">{icon}</span>",
+    "format-ethernet": "<span size=\"x-large\"></span>",
+    "format-disconnected": "<span size=\"x-large\"></span>",
     "max-length": 50,
     "on-click": "kitty -e 'nmtui'",
     "format-icons": [
@@ -83,6 +86,6 @@
     ]
   },
   "clock": {
-    "format": "{:%a, %d. %b  %I:%M %p}"
+    "format": "<span font_weight=\"600\">{:%a, %d. %b  %I:%M %p}</span>"
   }
 }
