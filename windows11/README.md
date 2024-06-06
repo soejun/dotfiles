@@ -55,4 +55,13 @@
 - Catppuccin Theme
 - VsVim Extension
     - Load _vsvimrc here: `C:\Users\User\_vsvimrc`
+- Edit.GoToAll (Ctrl+,) it Code Search
+    - remap that to Ctrl+F
 
+
+### Notes
+
+Mainly for useful commands
+
+- Getting all env's in powershell
+`gci env:* | sort-object name`
