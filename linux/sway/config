@@ -8,7 +8,8 @@
 ### Output configuration
 # output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
 # output * bg /home/wchan/Pictures/05212024_walls/path_to_peace.jpg fill
-output * bg /home/wchan/Pictures/mountain_views.png fill
+# output * bg /home/wchan/Pictures/mountain_views.png fill
+output * bg /home/wchan/Pictures/chill-beach-4k-upscale.jpg fill
 
 ### Idle configuration
 #
@@ -82,6 +83,14 @@ workspace 8 output $output-secondary
 workspace 9 output $output-secondary
 workspace 10 output $output-secondary
 
+#
+### Exec commands
+#
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Dark'
+exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+
 
 ### Input configuration
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -96,14 +105,13 @@ input "type:keyboard" {
   xkb_options "ctrl:nocaps, ctrl:swap_lalt_lctl_lwin"
 }
 
-## set up mouse behavior
+## set up external mouse behavior
 # Enable natural scrolling for the UNIMOUSE
 input "2867:4181:Contour_Design_UNIMOUSE" {
     natural_scroll enabled
 }
 
-# Disable the middle mouse button action
-# no map so it won't override
+# Disable the middle mouse button action no map so it won't override
 exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1 0 3
 
 ## set up touchpad behavior
@@ -111,6 +119,9 @@ exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1
 		tap enabled
 		natural_scroll enabled
 	}
+
+mouse_warping container
+focus_wrapping no
 ### Variables
 # set $mod Mod4 means $mod is physically l_ctrl but acts as super_l
 set $mod Mod4
@@ -122,7 +133,6 @@ set $right l
 set $term kitty
 set $menu wofi --show drun -i | xargs swaymsg exec --
 
-# $HOME = /home/hermes, update accordingly
 
 ### Key bindings
 #
@@ -174,27 +184,31 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
     # Move your focus around
     bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
+    # bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right] (Move focus to another window ("cult of vim" version))
-    # We're gonna comment this out so we can use our Win11 virtual machine bindings (hopefully)
-    # bindsym $mod+Left focus left
-    # bindsym $mod+Down focus down
-    # bindsym $mod+Up focus up
-    # bindsym $mod+Right focus right
+
+    # This might be a bit unintuitive at first
+    bindsym $mod+$down nop focus_prev_window
+    bindsym $mod+$up nop focus_next_window
 
     # Move the focused window with the same, but add Shift (Move the the window ("cult of vim" version))
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    # Comment out, we don't really need this and it'll free stuff up
-    # bindsym $mod+Shift+Left move left
-    # bindsym $mod+Shift+Down move down
-    # bindsym $mod+Shift+Up move up
-    # bindsym $mod+Shift+Right move right
+    # Uncomment if swaymonad breaks
+    # bindsym $mod+Shift+$left move left
+    # bindsym $mod+Shift+$down move down
+    # bindsym $mod+Shift+$up move up
+    # bindsym $mod+Shift+$right move right
+
+    bindsym $mod+Shift+$left nop move left
+    bindsym $mod+Shift+$down nop move down
+    bindsym $mod+Shift+$up nop move up
+    bindsym $mod+Shift+$right nop move right
+
+
+    # Porting yabai functionality with swaymonad
+    bindsym $mod+shift+y nop reflecty
+    bindsym $mod+shift+x nop reflectx
+    bindsym $mod+shift+r nop transpose
 #
 # Workspaces:
 #
@@ -319,28 +333,7 @@ bar {
 gaps inner 8
 gaps outer 3
 
-# exec_always nwg-panel
-# include /etc/sway/config.d/*
-
-# Set the default border width for all windows
 default_border pixel
-# Set the border colors for focused windows
 client.focused #7793d1 #7793d1 #181926 #7793d1
-# focus on border thickness later
 
-#
-# Exec commands - probably comment out most
-#
-# exec clipman
-# exec dunst
-# exec autotiling
-# exec blueman-applet
-exec gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Dark'
-exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-# exec_always dunst
-# output * max_render_time 35
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-# set $cursor_theme Adwaita
-# set $cursor_size 24
-# seat seat0 xcursor_theme $cursor_theme $cursor_size
-# exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr -r
+
