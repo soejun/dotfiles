@@ -8,10 +8,27 @@ function prompt {
   "$($Flavor.Green.Foreground())" + $(if ($NestedPromptLevel -ge 1) { '>>' }) + '> ' + $($PSStyle.Reset)
 }
 $Flavor = $Catppuccin['Macchiato']
-# The above example requires the automatic variable $PSStyle to be available, so can be only used in PS 7.2+
-# Replace $PSStyle.Reset with "`e[0m" for PS 6.0 through PS 7.1 or "$([char]27)[0m" for PS 5.1
-# Import-Module posh-git
+
+
+Import-Module posh-git
+Import-Module -Name Terminal-Icons
 
 $env:Path += ";C:\Users\User\AppData\Local\Programs\oh-my-posh\bin"
 $omp_config = Join-Path $env:POSH_THEMES_PATH "catppuccin_macchiato.omp.json"
 oh-my-posh init pwsh --config $omp_config | Invoke-Expression
+
+# Fzf
+Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+# PSReadLine
+Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -BellStyle None
+Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
+Set-PSReadLineOption -PredictionSource History
+
+# Utilities
+function which ($command) {
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
