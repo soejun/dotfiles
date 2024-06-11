@@ -16,7 +16,7 @@
     "network",
     "battery"
   ],
-  "height": 40,
+  "height": 32,
   "sway/window": {
     "format": "<span size=\"medium\" font_weight=\"600\">{}</span>",
     "max-length": 50
