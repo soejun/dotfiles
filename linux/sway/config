@@ -84,12 +84,24 @@ workspace 9 output $output-secondary
 workspace 10 output $output-secondary
 
 #
-### Exec commands
+### Essentials (Always Execute)
 #
-exec gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Dark'
-exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+
+# Sway autoexec
+set $schema "org.gnome.desktop.interface"
+
+exec_always {
+    gsettings set $schema gtk-theme Adwaita
+    gsettings set $schema icon-theme Adwaita
+    gsettings set $schema cursor-theme Yaru
+    gsettings set $schema gtk-application-prefer-dark-theme true
+
+    # fix wayland and sway bug
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+    # initiate swaymonad for autotiling
+    "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+}
 
 
 ### Input configuration
@@ -287,17 +299,37 @@ mode "resize" {
     bindsym $down resize shrink height 10px
     bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Up resize grow height 10px
-    bindsym Down resize shrink height 10px
-    bindsym Right resize grow width 10px
+    # resize with swaymonad
+    bindsym Left nop resize_master shrink width 10px
+    bindsym Up nop resize_master grow height 10px
+    bindsym Down nop resize_master shrink height 10px
+    bindsym Right nop resize_master grow width 10px
 
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+
+mode "layout" {
+  bindsym t nop set_layout tall
+
+  ### NCol
+  # Maintains n columns, with one column being the master column.
+  # When n=2, this is equivalent to Xmonad's Tall layout.
+  # When n=3, this is equivalent to Xmonad's ThreeColumn layout.
+  # Higher ns are supported, but don't currently have bindings.
+  bindsym 3 nop set_layout 3_col
+
+  ### Nop
+  # Disables auto-tiling for the workspace, allowing managing containers in normal Sway fashion.
+  bindsym n nop set_layout nop
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+alt+ctrl+l mode "layout"
 
 #
 # Volume Control - pipewire and pamixer
