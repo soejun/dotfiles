@@ -39,7 +39,7 @@
     "max-length": 10
   },
   "pulseaudio": {
-    "format": "<span size=\"xx-large\">{icon}</span>",
+    "format": "<span size=\"large\">{icon}</span>",
     "format-icons": [
       "󰝟",
       "",
@@ -54,9 +54,9 @@
     }
   },
   "network": {
-    "format-wifi": "<span size=\"x-large\">{icon}</span>",
-    "format-ethernet": "<span size=\"x-large\"></span>",
-    "format-disconnected": "<span size=\"x-large\"></span>",
+    "format-wifi": "<span size=\"large\">{icon}</span>",
+    "format-ethernet": "<span size=\"large\"></span>",
+    "format-disconnected": "<span size=\"large\"></span>",
     "max-length": 50,
     "on-click": "kitty -e 'nmtui'",
     "format-icons": [
