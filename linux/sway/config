@@ -7,9 +7,7 @@
 
 ### Output configuration
 # output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
-# output * bg /home/wchan/Pictures/05212024_walls/path_to_peace.jpg fill
-# output * bg /home/wchan/Pictures/mountain_views.png fill
-output * bg /home/wchan/Pictures/chill-beach-4k-upscale.jpg fill
+output * bg /home/soejun/Pictures/various-os-3-4k.png fill
 
 ### Idle configuration
 #
@@ -57,15 +55,16 @@ output * bg /home/wchan/Pictures/chill-beach-4k-upscale.jpg fill
 # Monitor Configuration
 
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
-output DP-1 resolution 2560x1440 position 0,0
-output HDMI-A-1 resolution 2560x1440 transform 90
+output DP-1 resolution 2560x1440 pos 0 0
+output eDP-1 resolution 1920x10809 pos 2560 0
+# output HDMI-A-1 resolution 2560x1440 transform 90
 # unfortunately position i believe is broken
 # position 2560,-480
 
 ## Multiple Monitor Workspace Setup
 
 set $output-primary DP-1
-set $output-secondary HDMI-A-1
+set $output-secondary eDP-1
 
 ## workspace to displays
 
@@ -75,13 +74,14 @@ workspace 2 output $output-primary
 workspace 3 output $output-primary
 workspace 4 output $output-primary
 workspace 5 output $output-primary
+workspace 6 output $output-primary
 
 ### secondary display (portrait)
-workspace 6 output $output-secondary
 workspace 7 output $output-secondary
 workspace 8 output $output-secondary
 workspace 9 output $output-secondary
 workspace 10 output $output-secondary
+workspace 11 output DP-2
 
 #
 ### Essentials (Always Execute)
@@ -117,20 +117,25 @@ input "type:keyboard" {
   xkb_options "ctrl:nocaps, ctrl:swap_lalt_lctl_lwin"
 }
 
+## set up touchpad behavior
+input "type:touchpad"	{
+  tap enabled
+  natural_scroll enabled
+}
+
 ## set up external mouse behavior
 # Enable natural scrolling for the UNIMOUSE
 input "2867:4181:Contour_Design_UNIMOUSE" {
     natural_scroll enabled
 }
 
+input "1133:45088:MX_Vertical_Mouse" {
+  natural_scroll enabled
+}
+
 # Disable the middle mouse button action no map so it won't override
 exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1 0 3
 
-## set up touchpad behavior
-	input "type:touchpad"	{
-		tap enabled
-		natural_scroll enabled
-	}
 
 mouse_warping container
 focus_wrapping no
@@ -336,23 +341,23 @@ bindsym $mod+alt+ctrl+l mode "layout"
 #
 
 # XF86AudioMute
-  bindsym XF86AudioMute exec 'pamixer --toggle-mute'
+  bindsym --locked XF86AudioMute exec 'pamixer --toggle-mute'
 
 # XF86AudioLowerVolume
-  bindsym XF86AudioLowerVolume exec 'pamixer --decrease 5'
+  bindsym --locked XF86AudioLowerVolume exec 'pamixer --decrease 5'
 
 # XF86AudioRaiseVolume
-  bindsym XF86AudioRaiseVolume exec 'pamixer --increase 5'
+  bindsym --locked XF86AudioRaiseVolume exec 'pamixer --increase 5'
 
 # X86AudioMicMute
-  bindsym XF86AudioMicMute exec 'pamixer --default-source --toggle-mute'
+  bindsym --locked XF86AudioMicMute exec 'pamixer --default-source --toggle-mute'
 
 #
 # Laptop Brightness Control
 #
 
-  bindsym XF86MonBrightnessDown exec 'light -U 5.00'
-  bindsym XF86MonBrightnessUp exec 'light -A 5.00'
+  bindsym --locked XF86MonBrightnessDown exec 'light -U 5.00'
+  bindsym --locked XF86MonBrightnessUp exec 'light -A 5.00'
 
 # Status Bar
 
