@@ -31,15 +31,37 @@
 
 [Please see our lord and savior devaslife](https://www.youtube.com/watch?v=5-aK2_WwrmM)
 
-- Install git
-- Install any certs where necessary
-- Install WSL
-- Install scoop
+- git
+- any certs where necessary
+- WSL
+- scoop
     - Run Powershell (Regularly), not as administrator
-    - ```powershell
+    - ```sh
             Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
             Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
         ```
+- lf (it's like ranger but cross platform and works in windows)
+- ripgrep
+- fzf
+- nvim
+- PSfzf
+- Terminal-Icons
+- post-git
+- oh-my-posh
+
+#### Getting nvim to work in Win 11
+```sh
+scoop install neovim
+scoop install ripgrep
+scoop install fzf
+Install-Module -Name PSfzf -scope CurrentUser -Force
+scoop install gcc
+scoop install make
+nvim
+# wait until lazy does its thing
+cd C:\Users\<USER_NAME>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim
+make
+```
 - Powershell Customization
     - https://github.com/catppuccin/powershell
     - https://github.com/catppuccin/windows-terminal
@@ -60,22 +82,7 @@
     - remap that to Ctrl+F
 
 
-### Notes
-
-Mainly for useful commands
-
-- Getting all env's in powershell
-`gci env:* | sort-object name`
-
-#### Getting nvim to work in Win 11
-```bash
-scoop install neovim
-scoop install ripgrep
-scoop install fzf
-Install-Module -Name PSfzf -scope CurrentUser -Force
-scoop install gcc
-scoop install make
-nvim
-# wait until lazy does its thing
-cd C:\Users\<USER_NAME>\AppData\Local\nvim-data\lazy\telescope-fzf-native.nvim
-make
+### Powershell Snippets
+- Equivalent of unix `man` pages: `Get-Help <command> -ShowWindow`
+- Getting all env's in powershell: `gci env:* | sort-object name`
+- Open file explorer at current path: `ii .`
