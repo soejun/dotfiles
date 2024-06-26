@@ -3,26 +3,50 @@
   "position": "top",
   "modules-left": [
     "sway/workspaces",
-    "sway/window",
     "sway/mode"
   ],
   "modules-center": [
-    "clock"
+    "sway/window"
   ],
   "modules-right": [
     "cpu",
     "memory",
     "pulseaudio",
     "network",
-    "battery"
+    "battery",
+    "clock"
   ],
   "height": 32,
   "sway/window": {
-    "format": "<span size=\"medium\" font_weight=\"600\">{}</span>",
-    "max-length": 50
+    "icon": false,
+    "icon-size": 32,
+    "format": "<span size=\"medium\" font_weight=\"1000\">{}</span>",
+    "max-length": 75
   },
   "sway/workspaces": {
-    "format": "<span size=\"large\" font_weight=\"600\">{}</span>"
+    "all-outputs": false,
+    "disable-scroll": true,
+    "format": "<span size=\"medium\" font_weight=\"700\">{icon}</span>",
+    "format-icons": {
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "1": ["DP-1"],
+      "2": ["DP-1"],
+      "3": ["DP-1"],
+      "4": ["DP-1"],
+      "5": ["DP-1"],
+      "6": ["HDMI-A-1","DP-1"],
+      "7": ["HDMI-A-1","DP-1"],
+      "8": ["HDMI-A-1","DP-1"],
+      "9": ["HDMI-A-1","DP-1"],
+      "10": ["HDMI-A-1","DP-1"]
+    }
+  },
+  "sway/mode": {
+    "format": "<span size=\"medium\" color=\"#ed8796\" font_weight=\"800\">{}</span>"
   },
   "tray": {
     "icon-size": 12,
@@ -34,7 +58,7 @@
     "max-length": 10
   },
   "memory": {
-    "interval": 30,
+    "interval": 15,
     "format": "<span color=\"#8aadf4\" size=\"x-large\">󰍛 </span><span font_weight=\"600\" rise=\"1.5pt\">{}%</span>",
     "max-length": 10
   },
@@ -86,6 +110,6 @@
     ]
   },
   "clock": {
-    "format": "<span font_weight=\"600\">{:%a, %d. %b  %I:%M %p}</span>"
+    "format": "<span font_weight=\"600\">{:%a, %d. %b\n%I:%M %p}</span>"
   }
 }

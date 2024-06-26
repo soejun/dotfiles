@@ -90,15 +90,15 @@ window#waybar.empty {
 }
 
 #workspaces button.focused {
-  color: @red;
+  color: @lavender;
 }
 
 #workspaces button.urgent {
-  background-color: @red;
+  color: @red;
 }
 
 #mode {
-  background-color: @red;
+  background-color: transparent;
 }
 
 #clock,
