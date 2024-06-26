@@ -48,6 +48,10 @@
 - Terminal-Icons
 - post-git
 - oh-my-posh
+- rust
+- treesitter-cli
+- `winget install Schniz.fnm`
+- `fnm use --install-if-missing 20`
 
 #### Getting nvim to work in Win 11
 ```sh
@@ -74,7 +78,8 @@ make
      - VSCode for misc. powershell scripts and related, this is because it's much more lightweight than visual studio
 
 ### Visual Studio
-
+- .NET development
+- C++ development (tooling for binary installs)
 - Catppuccin Theme
 - VsVim Extension
     - Load _vsvimrc here: `C:\Users\User\_vsvimrc`
@@ -82,7 +87,9 @@ make
     - remap that to Ctrl+F
 
 
-### Powershell Snippets
+### Powershell Snippets and Settings
 - Equivalent of unix `man` pages: `Get-Help <command> -ShowWindow`
 - Getting all env's in powershell: `gci env:* | sort-object name`
 - Open file explorer at current path: `ii .`
+- Redraw entire screen when display updates (This might make it appear faster)
+- Use CaskaydiaCove NerdFont (FiraCode is too sharp for windows)
