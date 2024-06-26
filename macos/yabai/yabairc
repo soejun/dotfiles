@@ -35,10 +35,10 @@ WINDOWS=(
 LAYOUT=(
 	layout bsp
 	top_padding 16
-	bottom_padding 8
-	left_padding 16
-	right_padding 16
-	window_gap 16
+	bottom_padding 16
+	left_padding 12
+	right_padding 12
+	window_gap 8
 )
 
 # mouse settings
@@ -60,14 +60,14 @@ yabai -m rule --add app="^QuickTime Player$" manage=off
 yabai -m rule --add app="^FaceTime$" manage=off
 yabai -m rule --add app="^MyWallpaper$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
-yabai -m rule --add app="^Steam Helper$" manage=off
+# yabai -m rule --add app="^Steam Helper$" manage=off
 
 yabai -m config "${GENERAL[@]}"
 yabai -m config "${WINDOWS[@]}"
 yabai -m config "${LAYOUT[@]}"
 yabai -m config "${MOUSE[@]}"
 
-borders active_color=0xff7793d1 inactive_color=0x00000000 width=3.0 style=round  hidpi=on order=above &
+borders active_color=0xff7793d1 inactive_color=0x00000000 width=2.0 style=round  hidpi=on order=above &
 
 #active_color=0xff7793d1
 #inactive_color=0xff5e6798
