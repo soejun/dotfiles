@@ -6,8 +6,7 @@
 
 
 ### Output configuration
-# output * bg /home/hermes/Pictures/Wallpapers/path_to_peace.jpg fill
-output * bg /home/soejun/Pictures/various-os-3-4k.png fill
+output * bg /home/wchan/Pictures/swaybg/ghibli_forest.png fill
 
 ### Idle configuration
 #
@@ -22,51 +21,18 @@ output * bg /home/soejun/Pictures/various-os-3-4k.png fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-
-### Monitor Setup
-
-# Monitor Setup
-#
-#                                      +------+
-#                                      |      |
-#                                      |      |
-#                                      |      |
-#                                      |      |
-#                                      |      |
-#                                      |      |
-#                                      |      |
-#                                      |      |
-#     +-------------------------+      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     |                         |      |      |
-#     +-------------------------+      |      |
-#  DP-1 2560x1440 (Landscape)          |      |
-#                                      |      |
-#                                      |      |
-#                                      +------+
-#                                HDMI-A-1 1440x2560 (Portrait)
-#
 # Monitor Configuration
 
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
-output DP-1 resolution 2560x1440 pos 0 0
-output eDP-1 resolution 1920x10809 pos 2560 0
-# output HDMI-A-1 resolution 2560x1440 transform 90
-# unfortunately position i believe is broken
-# position 2560,-480
+# output eDP-1 resolution 1920x1080 pos 2560 0
 
 ## Multiple Monitor Workspace Setup
 
-set $output-primary DP-1
-set $output-secondary eDP-1
+output DP-1 resolution 2560x1440 pos 0 0
+output HDMI-A-1 resolution 2560x1440 transform 90
 
-## workspace to displays
+set $output-primary DP-1
+set $output-secondary HDMI-A-1
 
 ### primary display (landscape)
 workspace 1 output $output-primary
@@ -74,14 +40,14 @@ workspace 2 output $output-primary
 workspace 3 output $output-primary
 workspace 4 output $output-primary
 workspace 5 output $output-primary
-workspace 6 output $output-primary
+# workspace 6 output $output-primary
 
 ### secondary display (portrait)
+workspace 6 output $output-secondary
 workspace 7 output $output-secondary
 workspace 8 output $output-secondary
 workspace 9 output $output-secondary
 workspace 10 output $output-secondary
-workspace 11 output DP-2
 
 #
 ### Essentials (Always Execute)
@@ -294,6 +260,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # Resizing containers:
 #
+## Dedicated resize mode
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -316,6 +283,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+#
+## Resizing in default mode
+    bindsym $mod+ctrl+Right  resize grow width 10px
+    bindsym $mod+ctrl+Left  resize shrink width 10px
+    bindsym $mod+ctrl+Up  resize grow height 10px
+    bindsym $mod+ctrl+Down  resize shrink height 10px
 
 mode "layout" {
   bindsym t nop set_layout tall
@@ -372,5 +345,3 @@ gaps outer 3
 
 default_border pixel
 client.focused #7793d1 #7793d1 #181926 #7793d1
-
-
