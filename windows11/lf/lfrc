@@ -1,4 +1,3 @@
-
 # interpreter for shell commands
 set shell powershell
 
@@ -45,6 +44,12 @@ set dircounts
 
 # use enter for shell commands
 map \! shell
+
+# view hidden files by default
+set hidden true
+
+# view icons
+set icons true
 
 # keybindings
 map zh set hidden!
