@@ -49,10 +49,11 @@ cmd + alt - h : yabai -m window --swap west
 cmd + alt - l : yabai -m window --swap east
 
 # resizing
-ctrl + cmd - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
-ctrl + cmd - j : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
-ctrl + cmd - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
-ctrl + cmd - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
+# would use arrow keys but for some reason that isn't working right now
+ctrl + cmd - h : yabai -m window west --resize right:-40:0 2> /dev/null || yabai -m window --resize right:-40:0
+ctrl + cmd - j : yabai -m window north --resize bottom:0:40 2> /dev/null || yabai -m window --resize bottom:0:40
+ctrl + cmd - k : yabai -m window south --resize top:0:-40 2> /dev/null || yabai -m window --resize top:0:-40
+ctrl + cmd - l : yabai -m window east --resize left:40:0 2> /dev/null || yabai -m window --resize left:40:0
 
 # move window and split
 cmd + shift - j : yabai -m window --warp south
@@ -86,4 +87,4 @@ shift + ctrl - 0 : yabai -m window --space 10;
 # stop/start/restart yabai
 ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
-ctrl + alt - r : yabai --restart-service
+cmd + shift - c: yabai --restart-service
