@@ -1,101 +1,93 @@
 #!/bin/bash
 
 source "$HOME/.config/sketchybar/colors.sh"
-source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
+source "$HOME/.config/sketchybar/icons.sh"      # Loads all defined icons
 source "$HOME/.config/sketchybar/userconfig.sh" # Loads all defined variables
 
-ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured (at this point this is gonna be refactored and eventually deprecated)
+ITEM_DIR="$HOME/.config/sketchybar/items"     # Directory where the items are configured (at this point this is gonna be refactored and eventually deprecated)
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
-
 
 # Setting up and starting the helper process
 HELPER=git.felix.helper
 killall helper
 cd $HOME/.config/sketchybar/helper && make
-$HOME/.config/sketchybar/helper/helper $HELPER > /dev/null 2>&1 &
+$HOME/.config/sketchybar/helper/helper $HELPER >/dev/null 2>&1 &
 
 # Unload the macOS on screen indicator overlay for volume change
 # Disable system integrity protection
-launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist >/dev/null 2>&1 &
 
 bar_config=(
-	blur_radius=30
-	color="$BASE"
-	corner_radius=9
-	height=40
-	margin=16
-	notch_width=200
-	padding_left=10
-	padding_right=10
-	position=top
-	shadow=on
-	sticky=on
-	topmost=off
-	y_offset=10
+  blur_radius=30
+  color="$BASE"
+  corner_radius=9
+  height=40
+  margin=16
+  notch_width=200
+  padding_left=10
+  padding_right=10
+  position=top
+  shadow=on
+  sticky=on
+  topmost=off
+  y_offset=10
 )
 
 # setting up default values
 
 icon_defaults=(
-	icon.color="$ICON_COLOR"
-	icon.font="$NERD_FONT:Bold:16.0"
-	icon.padding_left="$PADDINGS"
-	icon.padding_right="$PADDINGS"
+  icon.color="$ICON_COLOR"
+  icon.font="$NERD_FONT:Bold:16.0"
+  icon.padding_left="$PADDINGS"
+  icon.padding_right="$PADDINGS"
 )
 
 label_defaults=(
-	label.color="$TEXT"
-	label.font="$FONT:Semibold:13.0"
-	label.padding_left="$PADDINGS"
-	label.padding_right="$PADDINGS"
+  label.color="$TEXT"
+  label.font="$FONT:Semibold:13.0"
+  label.padding_left="$PADDINGS"
+  label.padding_right="$PADDINGS"
 )
 
 background_defaults=(
-	background.corner_radius=9
-	background.height=30
-	background.padding_left="$PADDINGS"
-	background.padding_right="$PADDINGS"
+  background.corner_radius=9
+  background.height=30
+  background.padding_left="$PADDINGS"
+  background.padding_right="$PADDINGS"
 )
-
 
 popup_defaults=(
-	popup.height=30
-	popup.horizontal=false
-	popup.background.border_color="$BLUE"
-	popup.background.border_width=2
-	popup.background.color="$MANTLE"
-	popup.background.corner_radius=11
-	popup.background.shadow.drawing=on
+  popup.height=30
+  popup.horizontal=false
+  popup.background.border_color="$BLUE"
+  popup.background.border_width=2
+  popup.background.color="$MANTLE"
+  popup.background.corner_radius=11
+  popup.background.shadow.drawing=on
 )
-
 
 # Setting up the general bar appearance and default values
 sketchybar --bar "${bar_config[@]}" \
-	--default \
-	updates=when_shown \
-	"${icon_defaults[@]}" \
-	"${label_defaults[@]}" \
-	"${background_defaults[@]}" \
-	"${popup_defaults[@]}"
+  --default \
+  updates=when_shown \
+  "${icon_defaults[@]}" \
+  "${label_defaults[@]}" \
+  "${background_defaults[@]}" \
+  "${popup_defaults[@]}"
 
 # Left
 source "$PLUGIN_DIR/lock/item.sh"
 source "$PLUGIN_DIR/apple/item.sh"
-# source "$ITEM_DIR/apple.sh"
 source "$PLUGIN_DIR/spaces/item.sh"
 # source "$PLUGIN_DIR/app_space/item.sh"
 source "$PLUGIN_DIR/front_app/item.sh"
-# source "$ITEM_DIR/spaces.sh"
-# source "$ITEM_DIR/front_app.sh"
-
 
 # Right
 source "$PLUGIN_DIR/date/item.sh"
 source "$PLUGIN_DIR/weather/item.sh"
 source "$PLUGIN_DIR/control-center/item.sh"
 source "$PLUGIN_DIR/stats/item.sh"
-# source "$ITEM_DIR/media.sh"
-source "$ITEM_DIR/spotifyIndicator.sh"
+source "$PLUGIN_DIR/spotify/item.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 # You know, we should probably monitor for wifi connection and restart

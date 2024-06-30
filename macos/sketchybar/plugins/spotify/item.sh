@@ -22,7 +22,7 @@ sketchybar --add item spot right \
                       update_freq=1 \
                       icon.drawing=off \
                       updates=on \
-                      script="$HOME/.config/sketchybar/plugins/spotifyIndicator.sh" \
+                      script="$PLUGIN_DIR/spotify/scripts/spotifyIndicator.sh" \
                       label.color=$TEAL\
                       label.max_chars=35 \
                       background.color=$TRANSPARENT \
