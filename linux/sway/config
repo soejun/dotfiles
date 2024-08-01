@@ -58,9 +58,10 @@ workspace 10 output $output-secondary
 # Sway autoexec
 set $schema "org.gnome.desktop.interface"
 
+# https://github.com/SylEleuth/gruvbox-plus-icon-pack
 exec_always {
-    gsettings set $schema gtk-theme Adwaita
-    gsettings set $schema icon-theme Adwaita
+    gsettings set $schema gtk-theme Gruvbox-Dark-Soft 
+    gsettings set $schema icon-theme Gruvbox-Plus-Dark
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
 
@@ -162,7 +163,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 	  bindsym $mod+Shift+e exec ~/.config/sway/swaypoweroff.sh
 
     # Lock sway
-    bindsym $mod+alt+l exec ~/.config/sway/lock.sh
+    bindsym Scroll_Lock exec ~/.config/sway/lock.sh
 
 #
 # Moving around:
