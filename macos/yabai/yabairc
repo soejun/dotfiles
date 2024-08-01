@@ -5,11 +5,10 @@ sudo yabai --load-sa
 
 # Signal hooks
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+# yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+# yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+# yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
-BAR_HEIGHT=$(sketchybar -m --query bar | jq -r '.height')
 
 GENERAL=(
 	external_bar all:"${BAR_HEIGHT}":0
@@ -34,8 +33,8 @@ WINDOWS=(
 # following gives best flushness for lualine and kitty
 LAYOUT=(
 	layout bsp
-	top_padding 16
-	bottom_padding 16
+	top_padding 8
+	bottom_padding 8
 	left_padding 12
 	right_padding 12
 	window_gap 8
@@ -67,7 +66,10 @@ yabai -m config "${WINDOWS[@]}"
 yabai -m config "${LAYOUT[@]}"
 yabai -m config "${MOUSE[@]}"
 
-borders active_color=0xff7793d1 inactive_color=0x00000000 width=3.5 style=round  hidpi=on order=above &
+# borders active_color=0xffebdbb2 inactive_color=0x00000000 width=1.5 style=round  hidpi=on order=above &
+
+borders active_color=0xff8ec07c inactive_color=0x00000000 width=2.0 style=round  hidpi=on order=above &
+# borders active_color=0xff7793d1 inactive_color=0x00000000 width=1.5 style=round  hidpi=on order=above &
 
 #active_color=0xff7793d1
 #inactive_color=0xff5e6798
