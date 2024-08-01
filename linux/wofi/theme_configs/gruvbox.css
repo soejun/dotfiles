@@ -1,23 +1,21 @@
-
-@define-color bg0_hard #1d2021;
-@define-color bg0 #282828;
-@define-color bg0_soft #32302f;
-@define-color bg1 #3c3836;
-@define-color bg2 #504945;
-@define-color bg3 #665c54;
-@define-color bg4 #7c6f64;
-@define-color fg0 #fbf1c7;
-@define-color fg1 #ebdbb2;
-@define-color fg2 #d5c4a1;
-@define-color fg3 #bdae93;
-@define-color fg4 #a89984;
-@define-color red #fb4934;
-@define-color green #b8bb26;
-@define-color yellow #fabd2f;
-@define-color blue #83a598;
-@define-color purple #d3869b;
-@define-color aqua #8ec07c;
-@define-color orange #fe8019;
+@define-color    bg0_h     #1d2021;
+@define-color    bg0      #282828;
+@define-color    bg1      #3c3836;
+@define-color    bg2      #504945;
+@define-color    bg3      #665c54;
+@define-color    bg4      #7c6f64;
+@define-color    fg0      #fbf1c7;
+@define-color    fg1      #ebdbb2;
+@define-color    fg2      #d5c4a1;
+@define-color    fg3      #bdae93;
+@define-color    fg4      #a89984;
+@define-color    red      #fb4934;
+@define-color    green    #b8bb26;
+@define-color    yellow   #fabd2f;
+@define-color    blue     #83a598;
+@define-color    purple   #d3869b;
+@define-color    aqua     #8ec07c;
+@define-color    orange   #fe8019;
 
 * {
   font-family: 'Inconsolata Nerd Font', monospace;
@@ -28,7 +26,7 @@
 window {
   margin: 0px;
   padding: 10px;
-  border: 0.16em solid @fg1;
+  border: 0.16em solid @fg4;
   border-radius: 0.1em;
   background-color: @bg0;
   animation: slideIn 0.5s ease-in-out both;
@@ -37,10 +35,11 @@ window {
 /* Slide In */
 @keyframes slideIn {
   0% {
-    opacity: 0;
+     opacity: 0;
   }
+
   100% {
-    opacity: 1;
+     opacity: 1;
   }
 }
 
@@ -56,10 +55,11 @@ window {
 /* Fade In */
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+     opacity: 0;
   }
+
   100% {
-    opacity: 1;
+     opacity: 1;
   }
 }
 
@@ -91,12 +91,12 @@ window {
 }
 
 #input image {
-  border: none;
-  color: @red;
+    border: none;
+    color: @red;
 }
 
 #input * {
-  outline: 4px solid @red !important;
+  outline: 4px solid @red!important;
 }
 
 /* Text */
@@ -113,12 +113,12 @@ window {
 
 #entry arrow {
   border: none;
-  color: @fg1;
+  color: @fg4;
 }
 
 /* Selected Entry */
 #entry:selected {
-  border: 0.11em solid @fg1;
+  border: 0.11em solid @fg4;
 }
 
 #entry:selected #text {
@@ -126,6 +126,5 @@ window {
 }
 
 #entry:drop(active) {
-  background-color: @fg1 !important;
+  background-color: @fg4!important;
 }
-

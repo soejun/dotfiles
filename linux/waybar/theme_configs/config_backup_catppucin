@@ -3,10 +3,10 @@
   "position": "top",
   "modules-left": [
     "sway/workspaces",
-    "sway/window"
+    "sway/mode"
   ],
   "modules-center": [
-    "sway/mode",
+    "sway/window"
   ],
   "modules-right": [
     "cpu",
@@ -54,12 +54,12 @@
   },
   "cpu": {
     "interval": 15,
-    "format": "<span rise=\"-.5pt\" color=\"#b8bb26\"> </span><span font_weight=\"600\" rise=\"-1pt\">{}%</span>",
+    "format": "<span rise=\"-.5pt\" color=\"#a6da95\"> </span><span font_weight=\"600\" rise=\"-1pt\">{}%</span>",
     "max-length": 10
   },
   "memory": {
     "interval": 15,
-    "format": "<span color=\"#83a598\" size=\"x-large\">󰍛 </span><span font_weight=\"600\" rise=\"1.5pt\">{}%</span>",
+    "format": "<span color=\"#8aadf4\" size=\"x-large\">󰍛 </span><span font_weight=\"600\" rise=\"1.5pt\">{}%</span>",
     "max-length": 10
   },
   "pulseaudio": {
@@ -110,6 +110,6 @@
     ]
   },
   "clock": {
-    "format": "<span font_weight=\"600\">{:%a %b. %d %I:%M %p}</span>"
+    "format": "<span font_weight=\"600\">{:%a, %d. %b\n%I:%M %p}</span>"
   }
 }

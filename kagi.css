@@ -1,0 +1,46 @@
+:root {
+  --color-primary: #ebdbb2;
+  --color-primary_hover: #fbf1c7;
+  --page-text-color: #ebdbb2;
+  --background-color: #1d2021;
+  --color-primary_visited: #b16286;
+  --search-result-title: #83a598;
+  --search-result-title-hover: #458588;
+  --search-result-subtitle: #458588;
+  --search-result-content-text: #a89984;
+  --color_link: #83a598;
+  --footer-bg: #1d2021;
+  --color-search-input: #3c3836;
+  --inline-widget-bg: #282828;
+  --search-result-date-new-bg: #d79921;
+  --related-item-bg: #282828;
+  --search-result-date-bg: #282828;
+  --m_sri_gap_color: #1d2021;
+}
+
+.btn.--yellow {
+  background: #d79921;
+}
+
+.footer.footer-landing,
+header.app-header.app-content-box,
+.__sri-title .__sri_title_link,
+.__sri-title .__sri_title_link:hover,
+.__srgi-title a,
+.__srgi-title a:hover {
+  border: 0;
+}
+
+.__sri-title {
+  margin-bottom: 0;
+}
+
+.__sri-url .__domain-favicon {
+  margin-right: 10px;
+}
+
+.__srgi-title a {
+  color: var(--search-result-subtitle);
+}
+
+/* Removed the font-size modification */

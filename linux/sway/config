@@ -6,7 +6,9 @@
 
 
 ### Output configuration
-output * bg /home/wchan/Pictures/swaybg/ghibli_forest.png fill
+# output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/minimalistic/gruv-portal-cake.png fill
+output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
+
 
 ### Idle configuration
 #
@@ -84,7 +86,7 @@ input "type:keyboard" {
 }
 
 ## set up touchpad behavior
-input "type:touchpad"	{
+input "type:touchpad" {
   tap enabled
   natural_scroll enabled
 }
@@ -285,10 +287,10 @@ bindsym $mod+r mode "resize"
 
 #
 ## Resizing in default mode
-    bindsym $mod+ctrl+Right  resize grow width 10px
-    bindsym $mod+ctrl+Left  resize shrink width 10px
-    bindsym $mod+ctrl+Up  resize grow height 10px
-    bindsym $mod+ctrl+Down  resize shrink height 10px
+    bindsym $mod+ctrl+$right  resize grow width 10px
+    bindsym $mod+ctrl+$left  resize shrink width 10px
+    bindsym $mod+ctrl+$up  resize grow height 10px
+    bindsym $mod+ctrl+$down  resize shrink height 10px
 
 mode "layout" {
   bindsym t nop set_layout tall
@@ -344,4 +346,4 @@ gaps inner 8
 gaps outer 3
 
 default_border pixel
-client.focused #7793d1 #7793d1 #181926 #7793d1
+client.focused #8ec07c #8ec07c #1d2021 #8ec07c

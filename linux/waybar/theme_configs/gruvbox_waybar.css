@@ -1,3 +1,4 @@
+
 /*
 *
 * Gruvbox Dark Soft palette
@@ -44,7 +45,7 @@
 }
 
 window#waybar {
-  background-color: rgba(40, 40, 40, 0.88);
+  background-color: rgba(40, 40, 40, 0.9);
   color: @fg1;
   transition-property: background-color;
   transition-duration: 0.25s;
@@ -55,13 +56,13 @@ window#waybar.hidden {
 }
 
 window#waybar.empty {
-  background-color: rgba(40, 40, 40, 0.88);
+  background-color: rgba(40, 40, 40, 0.9);
 }
 
 #workspaces {
   margin: 8px;
   padding: 2px;
-  background-color: rgba(60, 56, 54, 0.0);
+  background-color: @bg1;
   border-radius: 1rem;
 }
 
@@ -191,7 +192,7 @@ label:focus {
 
 #pulseaudio.muted {
   background-color: transparent;
-  color: @bg3;
+  color: @red;
   padding-top: 1px;
 }
 
@@ -279,3 +280,4 @@ label:focus {
 #keyboard-state > label.locked {
   background: rgba(0, 0, 0, 0.2);
 }
+

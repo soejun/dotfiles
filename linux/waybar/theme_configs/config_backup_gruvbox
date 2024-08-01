@@ -3,10 +3,10 @@
   "position": "top",
   "modules-left": [
     "sway/workspaces",
+    "sway/mode",
     "sway/window"
   ],
   "modules-center": [
-    "sway/mode",
   ],
   "modules-right": [
     "cpu",

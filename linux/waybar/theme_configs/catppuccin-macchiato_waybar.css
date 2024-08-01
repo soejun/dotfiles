@@ -1,31 +1,45 @@
 /*
 *
-* Gruvbox Dark Soft palette
+* Catppuccin Macchiato palette
 * Maintainer: rubyowo
-*
+* 
 */
 
-@define-color bg0_hard #1d2021;
-@define-color bg0 #282828;
-@define-color bg0_soft #32302f;
-@define-color bg1 #3c3836;
-@define-color bg2 #504945;
-@define-color bg3 #665c54;
-@define-color bg4 #7c6f64;
-@define-color fg0 #fbf1c7;
-@define-color fg1 #ebdbb2;
-@define-color fg2 #d5c4a1;
-@define-color fg3 #bdae93;
-@define-color fg4 #a89984;
-@define-color red #fb4934;
-@define-color green #b8bb26;
-@define-color yellow #fabd2f;
-@define-color blue #83a598;
-@define-color purple #d3869b;
-@define-color aqua #8ec07c;
-@define-color orange #fe8019;
+@define-color rosewater #f4dbd6;
+@define-color flamingo #f0c6c6;
+@define-color pink #f5bde6;
+@define-color mauve #c6a0f6;
+@define-color red #ed8796;
+@define-color maroon #ee99a0;
+@define-color peach #f5a97f;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+@define-color teal #8bd5ca;
+@define-color sky #91d7e3;
+@define-color sapphire #7dc4e4;
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color text #cad3f5;
+@define-color subtext1 #b8c0e0;
+@define-color subtext0 #a5adcb;
+@define-color overlay2 #939ab7;
+@define-color overlay1 #8087a2;
+@define-color overlay0 #6e738d;
+@define-color surface2 #5b6078;
+@define-color surface1 #494d64;
+@define-color surface1_transparent rgba(73, 77, 100, 0.8);
+@define-color surface0 #363a4f;
+@define-color base #24273a;
+@define-color base_transparent rgba(36, 39, 58, 0.9);
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
+/* copy and paste this to waybar/style.css */
 
 * {
+  /* `otf-font-awesome` is required to be installed for icons */
+  /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+  /* font-family: 'Material Design Icons', 'NerdFonts', FontAwesome, 'Fira Code', sans-serif; */
   font-family: 'FiraCode Nerd Font', 'Fira Code', 'Material Design Icons', 'NerdFonts', 'FontAwesome', sans-serif;
   font-size: 13px;
 }
@@ -44,8 +58,8 @@
 }
 
 window#waybar {
-  background-color: rgba(40, 40, 40, 0.88);
-  color: @fg1;
+  background-color: @base_transparent;
+  color: @text;
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -55,13 +69,13 @@ window#waybar.hidden {
 }
 
 window#waybar.empty {
-  background-color: rgba(40, 40, 40, 0.88);
+  background-color: @base_transparent;
 }
 
 #workspaces {
   margin: 8px;
   padding: 2px;
-  background-color: rgba(60, 56, 54, 0.0);
+  background-color: @surface1;
   border-radius: 1rem;
 }
 
@@ -69,15 +83,16 @@ window#waybar.empty {
   padding: 0px;
   margin: 2px;
   background-color: transparent;
-  color: @fg1;
+  color: @text;
 }
 
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-  background: @bg2;
+  background: @surface2;
 }
 
 #workspaces button.focused {
-  color: @blue;
+  color: @lavender;
 }
 
 #workspaces button.urgent {
@@ -106,12 +121,13 @@ window#waybar.empty {
   padding-left: 8px;
   padding-right: 8px;
   margin: 2px;
-  color: @fg1;
+  color: @text;
 }
 
 #window {
   margin: 4px;
   background-color: transparent;
+  /* background-color: @surface0; */
   border-radius: 2rem;
   padding-left: 8px;
   padding-right: 8px;
@@ -124,16 +140,19 @@ window#waybar.empty #window {
 #clock {
   padding-top: 2px;
   background-color: transparent;
+  /* background-color: @surface0; */
 }
 
 #battery {
   background-color: rgba(0, 0, 0, 0);
+  /* background-color: @surface0; */
 }
 
 #battery.charging,
 #battery.plugged {
   color: @green;
   background-color: transparent;
+  /* background-color: @surface0; */
 }
 
 @keyframes blink {
@@ -167,11 +186,11 @@ label:focus {
 }
 
 #disk {
-  background-color: @orange;
+  background-color: @peach;
 }
 
 #backlight {
-  background-color: @aqua;
+  background-color: @teal;
 }
 
 #network {
@@ -181,23 +200,23 @@ label:focus {
 
 #network.disconnected {
   background-color: @red;
-  color: @bg0;
+  color: @crust;
 }
 
 #pulseaudio {
   background-color: transparent;
-  color: @fg1;
+  color: @text;
 }
 
 #pulseaudio.muted {
   background-color: transparent;
-  color: @bg3;
+  color: @red;
   padding-top: 1px;
 }
 
 #custom-media {
   background-color: @green;
-  color: @bg0;
+  color: @crust;
   min-width: 100px;
 }
 
@@ -210,7 +229,7 @@ label:focus {
 }
 
 #temperature {
-  background-color: @orange;
+  background-color: @peach;
 }
 
 #temperature.critical {
@@ -218,7 +237,7 @@ label:focus {
 }
 
 #tray {
-  background-color: @bg0;
+  background-color: @crust;
 }
 
 #tray > .passive {
@@ -231,17 +250,17 @@ label:focus {
 }
 
 #idle_inhibitor {
-  background-color: @bg1;
+  background-color: @mantle;
 }
 
 #idle_inhibitor.activated {
-  background-color: @bg3;
-  color: @bg1;
+  background-color: @overlay0;
+  color: @mantle;
 }
 
 #mpd {
   background-color: @green;
-  color: @bg0;
+  color: @crust;
 }
 
 #mpd.disconnected {
@@ -249,7 +268,7 @@ label:focus {
 }
 
 #mpd.stopped {
-  background-color: @aqua;
+  background-color: @teal;
 }
 
 #mpd.paused {
@@ -257,8 +276,8 @@ label:focus {
 }
 
 #language {
-  background: @aqua;
-  color: @red;
+  background: @teal;
+  color: @maroon;
   padding: 0 5px;
   margin: 0 5px;
   min-width: 16px;
