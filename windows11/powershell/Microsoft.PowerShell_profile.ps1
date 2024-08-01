@@ -1,9 +1,10 @@
 using namespace System.Management.Automation;
+using namespace System.Diagnostics;
 
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-Import-Module Catppuccin
+<# Import-Module Catppuccin
 function prompt {
   $(if (Test-Path variable:/PSDebugContext) { "$($Flavor.Red.Foreground())[DBG]: " }
     else { '' }) + "$($Flavor.Teal.Foreground())PS $($Flavor.Yellow.Foreground())" + $(Get-Location) +
@@ -11,13 +12,17 @@ function prompt {
 }
 $Flavor = $Catppuccin['Macchiato']
 
-
+ #>
 Import-Module posh-git
 Import-Module -Name Terminal-Icons
 
+$env:EDITOR = "C:\Users\User\scoop\shims\nvim.exe"
+
 $env:Path += ";C:\Users\User\AppData\Local\Programs\oh-my-posh\bin"
-$omp_config = Join-Path $env:POSH_THEMES_PATH "catppuccin_macchiato.omp.json"
+$omp_config = Join-Path $env:POSH_THEMES_PATH "gruvbox-minimal.omp.json"
 oh-my-posh init pwsh --config $omp_config | Invoke-Expression
+
+# $env:LF_ICONS = ((Get-Content -Path ($Env:USERPROFILE + '\AppData\Local\lf\icons') -Encoding utf8) -replace '\s*#.*','' -replace '(?<File_Regex>[\S]+)\s+(?<Icon_String>\S)','${File_Regex}=${Icon_String}') | ?{$_ -ne ""} | Join-String -Separator ':'
 
 # Fzf
 Import-Module PSFzf
@@ -34,6 +39,7 @@ function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
+
 
 # Autocompletion for powershell
 Register-ArgumentCompleter -Native -CommandName 'lf' -ScriptBlock {
@@ -73,3 +79,5 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+o' -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($scriptPath)
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
+
+fnm env --use-on-cd | Out-String | Invoke-Expression
