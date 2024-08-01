@@ -68,7 +68,7 @@ yabai -m config "${MOUSE[@]}"
 
 # borders active_color=0xffebdbb2 inactive_color=0x00000000 width=1.5 style=round  hidpi=on order=above &
 
-borders active_color=0xff8ec07c inactive_color=0x00000000 width=2.0 style=round  hidpi=on order=above &
+borders active_color=0xff8ec07c inactive_color=0x00000000 width=1.5 style=round  hidpi=on order=above &
 # borders active_color=0xff7793d1 inactive_color=0x00000000 width=1.5 style=round  hidpi=on order=above &
 
 #active_color=0xff7793d1
