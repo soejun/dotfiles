@@ -7,7 +7,12 @@
 
 ### Output configuration
 # output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/minimalistic/gruv-portal-cake.png fill
-output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
+# output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
+# output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/irl/camera.jpg fill
+# output * bg /home/wchan/Pictures/swaybg/camera-1130731.jpg fill
+output * bg /home/wchan/Pictures/swaybg/mountain_retreat_u_scaredpie.jpg fill
+# output * bg /home/wchan/Pictures/alphacoders/1351840.png fill
+
 
 
 ### Idle configuration
@@ -30,11 +35,20 @@ output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.
 
 ## Multiple Monitor Workspace Setup
 
-output DP-1 resolution 2560x1440 pos 0 0
-output HDMI-A-1 resolution 2560x1440 transform 90
+# use wdisplays to configure position properly
+
+# For the 29" monitor (landscape mode)
+# output DP-1 resolution 2560x1080 scale .92 scale_filter linear pos 0 649
+
+output DP-1 resolution 2560x1440 pos 0 510 
+# For the 24" monitor (portrait mode, rotated 90 degrees)
+output HDMI-A-1 resolution 2560x1440 transform 90 pos 2560 0
 
 set $output-primary DP-1
 set $output-secondary HDMI-A-1
+
+
+## TODO - Presets for different configurations
 
 ### primary display (landscape)
 workspace 1 output $output-primary
@@ -42,7 +56,6 @@ workspace 2 output $output-primary
 workspace 3 output $output-primary
 workspace 4 output $output-primary
 workspace 5 output $output-primary
-# workspace 6 output $output-primary
 
 ### secondary display (portrait)
 workspace 6 output $output-secondary
@@ -142,7 +155,8 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # Full screen screenshot to clipboard
     bindsym $mod+Shift+s exec grimshot copy screen
     # Area screenshot to clipboard
-    bindsym $mod+Shift+a exec grimshot copy area
+    bindsym Print exec grimshot copy area
+    # bindsym $mod+Shift+a exec grimshot copy area
     # Full screen screenshot to file
     bindsym $mod+Shift+Alt+s exec grimshot save screen
     # Window screenshot to clipboard
@@ -168,7 +182,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # Moving around:
 #
-    # Move your focus around
+    # Move your focus around (also applies to stacked and tabbed)
     bindsym $mod+$left focus left
     # bindsym $mod+$down focus down
     # bindsym $mod+$up focus up
@@ -194,7 +208,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # Porting yabai functionality with swaymonad
     bindsym $mod+shift+y nop reflecty
     bindsym $mod+shift+x nop reflectx
-    bindsym $mod+shift+r nop transpose
+    bindsym $mod+shift+t nop transpose
 #
 # Workspaces:
 #
@@ -233,8 +247,11 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
+
+    ## TODO - Why the hell is this mapped to w?? Does that make any sense with the word "tabbed"?
     bindsym $mod+w layout tabbed
-    # layout toggle split is what we mainly want
+
+    # layout toggle split is what we mainly want (SAME WITH THIS WHY IS SPLIT MAPPED TO `e`)
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -263,7 +280,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # Resizing containers:
 #
-## Dedicated resize mode
+## Dedicated resize mode (More Precise)
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -288,10 +305,10 @@ bindsym $mod+r mode "resize"
 
 #
 ## Resizing in default mode
-    bindsym $mod+ctrl+$right  resize grow width 10px
-    bindsym $mod+ctrl+$left  resize shrink width 10px
-    bindsym $mod+ctrl+$up  resize grow height 10px
-    bindsym $mod+ctrl+$down  resize shrink height 10px
+    bindsym $mod+ctrl+$right  resize grow width 30px
+    bindsym $mod+ctrl+$left  resize shrink width 30px
+    bindsym $mod+ctrl+$up  resize grow height 30px
+    bindsym $mod+ctrl+$down  resize shrink height 30px
 
 mode "layout" {
   bindsym t nop set_layout tall
@@ -347,4 +364,8 @@ gaps inner 8
 gaps outer 3
 
 default_border pixel
-client.focused #8ec07c #8ec07c #1d2021 #8ec07c
+# gruvbox borders
+client.focused #8ec07c #8ec07c #665c54 #8ec07c
+
+# onedark-pro borders
+# client.focused #98c379 #98c379 #5c6370 #98c379
