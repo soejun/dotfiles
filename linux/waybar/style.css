@@ -1,7 +1,6 @@
 /*
 *
 * Gruvbox Dark Soft palette
-* Maintainer: rubyowo
 *
 */
 
@@ -18,6 +17,7 @@
 @define-color fg3 #bdae93;
 @define-color fg4 #a89984;
 @define-color red #fb4934;
+@define-color soft_red #e57373;
 @define-color green #b8bb26;
 @define-color yellow #fabd2f;
 @define-color blue #83a598;
@@ -26,8 +26,8 @@
 @define-color orange #fe8019;
 
 * {
-  font-family: 'FiraCode Nerd Font', 'Fira Code', 'Material Design Icons', 'NerdFonts', 'FontAwesome', sans-serif;
-  font-size: 13px;
+  font-family: 'CaskaydiaCove Nerd Font', 'Caskaydia Code', 'Material Design Icons', 'NerdFonts', 'FontAwesome', sans-serif;
+  font-size: 11px;
 }
 
 .modules-right {
@@ -44,7 +44,7 @@
 }
 
 window#waybar {
-  background-color: rgba(40, 40, 40, 0.88);
+  background-color: rgba(40, 40, 40, 0.70);
   color: @fg1;
   transition-property: background-color;
   transition-duration: 0.25s;
@@ -55,11 +55,11 @@ window#waybar.hidden {
 }
 
 window#waybar.empty {
-  background-color: rgba(40, 40, 40, 0.88);
+  background-color: rgba(40, 40, 40, 0.70);
 }
 
 #workspaces {
-  margin: 8px;
+  margin: 4px;
   padding: 2px;
   background-color: rgba(60, 56, 54, 0.0);
   border-radius: 1rem;
@@ -67,7 +67,7 @@ window#waybar.empty {
 
 #workspaces button {
   padding: 0px;
-  margin: 2px;
+  margin: 0px;
   background-color: transparent;
   color: @fg1;
 }
@@ -122,7 +122,7 @@ window#waybar.empty #window {
 }
 
 #clock {
-  padding-top: 2px;
+  padding-top: 1px;
   background-color: transparent;
 }
 
@@ -163,6 +163,7 @@ label:focus {
 }
 
 #memory {
+  padding-top: 2px;
   background-color: transparent;
 }
 
@@ -175,24 +176,28 @@ label:focus {
 }
 
 #network {
-  padding-top: 1px;
+  padding-top: 2px;
   background-color: transparent;
 }
 
 #network.disconnected {
+  padding-top: 2px;
   background-color: @red;
   color: @bg0;
 }
 
 #pulseaudio {
   background-color: transparent;
-  color: @fg1;
+  color: @blue;
+  padding-top: 2px;
+  margin-right: 4px;
 }
 
 #pulseaudio.muted {
   background-color: transparent;
-  color: @bg3;
-  padding-top: 1px;
+  color: @soft_red;
+  padding-top: 2px;
+  margin-right: 4px;
 }
 
 #custom-media {
