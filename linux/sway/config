@@ -364,8 +364,13 @@ gaps inner 8
 gaps outer 3
 
 default_border pixel
+# client.focused #7793d1 #7793d1 #181926 #7793d1
+
+# catppuccin borders
+# client.focused #8ec07c #8ec07c #665c54 #8ec07c
+
 # gruvbox borders
-client.focused #8ec07c #8ec07c #665c54 #8ec07c
+# client.focused #8ec07c #8ec07c #665c54 #8ec07c
 
 # onedark-pro borders
-# client.focused #98c379 #98c379 #5c6370 #98c379
+client.focused #98c379 #98c379 #5c6370 #98c379
