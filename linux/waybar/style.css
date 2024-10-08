@@ -31,17 +31,30 @@
 }
 
 /* Module Styles */
+.modules-left {
+  /* margin: 4px; */
+  padding: 0px 2px;
+  background-color: rgba(79, 86, 102, 0.35);
+  /* background-color: rgba(40, 40, 40, 0); */
+  /* border-radius: 0rem 2rem 2rem 0rem; */
+  border-radius: 2rem;
+}
+
 .modules-right {
-  margin: 4px;
-  padding: 3px;
-  background-color: rgba(40, 40, 40, 0);
+  /* margin: 4px; */
+  padding: 0px 2px;
+  background-color: rgba(79, 86, 102, 0.35);
+  /* background-color: rgba(40, 40, 40, 0); */
+  /* border-radius: 2rem 0rem 0rem 2rem; */
   border-radius: 2rem;
 }
 
 .modules-center {
-  margin: 4px;
-  padding: 3px;
+  /* margin: 4px; */
+  /* padding: 3px; */
+  padding: 0px 2px;
   border-radius: 2rem;
+
 }
 
 window#waybar {
@@ -61,15 +74,15 @@ window#waybar.empty {
 
 /* Workspaces */
 #workspaces {
-  margin: 4px;
-  padding: 2px;
+  /* margin: 4px; */
+  /* padding: 2px; */
   background-color: rgba(63, 68, 81, 0.0);  /* OneDark Pro inactive tab background */
   border-radius: 1rem;
 }
 
 #workspaces button {
-  padding: 0px;
-  margin: 0px;
+  padding: 1px;
+  margin: 0px 4px 0px 4px;
   background-color: transparent;
   color: @fg1;
 }

@@ -6,12 +6,7 @@
 
 
 ### Output configuration
-# output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/minimalistic/gruv-portal-cake.png fill
-# output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
-# output * bg /home/wchan/Pictures/gruvbox-wallpapers/wallpapers/irl/camera.jpg fill
-# output * bg /home/wchan/Pictures/swaybg/camera-1130731.jpg fill
-output * bg /home/wchan/Pictures/swaybg/mountain_retreat_u_scaredpie.jpg fill
-# output * bg /home/wchan/Pictures/alphacoders/1351840.png fill
+output * bg /home/wchan/Pictures/onedark-wallpapers-main/minimal/od_brush.png fill
 
 
 
@@ -73,8 +68,10 @@ set $schema "org.gnome.desktop.interface"
 
 # https://github.com/SylEleuth/gruvbox-plus-icon-pack
 exec_always {
-    gsettings set $schema gtk-theme Gruvbox-Dark-Soft 
-    gsettings set $schema icon-theme Gruvbox-Plus-Dark
+    gsettings set $schema gtk-theme Adwaita-dark 
+    gsettings set $schema icon-theme Adwaita
+    # gsettings set $schema gtk-theme Gruvbox-Dark-Soft 
+    # gsettings set $schema icon-theme Gruvbox-Plus-Dark
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
 

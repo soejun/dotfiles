@@ -54,7 +54,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "<span color=\"#98C379\">  </span><span font_weight=\"600\" color=\"#ABB2BF\">{}%</span>",
+    "format": "<span color=\"#D19A66\">  </span><span font_weight=\"600\" color=\"#ABB2BF\">{}%</span>",
     "max-length": 10
   },
   "memory": {
@@ -63,7 +63,7 @@
     "max-length": 10
   },
   "pulseaudio": {
-    "format": "<span size=\"large\" color=\"#61AFEF\">{icon}</span>",
+    "format": "<span size=\"large\" color=\"#98C379\">{icon}</span>",
     "format-icons": [
       "󰝟",
       "",
@@ -110,7 +110,7 @@
     ]
   },
   "clock": {
-    "format": "<span font_weight=\"600\" color=\"#E5C07B\">{:%a %b. %d %I:%M %p}</span>"
+    "format": "<span font_weight=\"600\">{:%a %b. %d %I:%M %p}</span>"
   }
 }
 
