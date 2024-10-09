@@ -360,7 +360,7 @@ bar {
 gaps inner 8
 gaps outer 3
 
-default_border pixel
+default_border pixel 2
 # client.focused #7793d1 #7793d1 #181926 #7793d1
 
 # catppuccin borders
@@ -369,5 +369,11 @@ default_border pixel
 # gruvbox borders
 # client.focused #8ec07c #8ec07c #665c54 #8ec07c
 
-# onedark-pro borders
-client.focused #98c379 #98c379 #5c6370 #98c379
+# onedark-pro borders-blue
+client.focused #61AFEF #61AFEF #5c6370 #61AFEF
+
+# onedark-pro borders-cyan
+# client.focused #88C0D0 #88C0D0 #5c6370 #88C0D0
+
+# onedark-pro borders-cyan-2
+# client.focused #56B6C2 #56B6C2 #5c6370 #56B6C2
