@@ -97,10 +97,10 @@ cmd-l = 'focus right'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-ctrl-shift-h = 'move left'
-ctrl-shift-j = 'move down'
-ctrl-shift-k = 'move up'
-ctrl-shift-l = 'move right'
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
@@ -130,15 +130,21 @@ ctrl-shift-0 = 'move-node-to-workspace B'
 ctrl-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-ctrl-tab = 'workspace-back-and-forth'
+alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-ctrl-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-shift-semicolon = 'mode service'
+
+# resizing in normal
+cmd-ctrl-h = 'resize width -50'
+cmd-ctrl-j = 'resize height +50'
+cmd-ctrl-k = 'resize height -50'
+cmd-ctrl-l = 'resize width +50'
+cmd-ctrl-b = 'balance-sizes'
+
 
 alt-shift-r = 'mode resize'
-
 [mode.resize.binding]
 h = 'resize width -50'
 j = 'resize height +50'
@@ -156,6 +162,8 @@ esc = 'mode main'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+alt-shift-c = 'reload-config'
+ctrl-shift-semicolon = 'mode service'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
