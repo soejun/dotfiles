@@ -13,6 +13,9 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 
+
+# JankyBorders has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
 after-startup-command = ['exec-and-forget /opt/homebrew/bin/borders active_color=0xff61afef inactive_color=0x00000000 width=1.5 style=round hidpi=on order=above']
 
 # Start AeroSpace at login
@@ -25,8 +28,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
-
+accordion-padding = 20
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
 
@@ -53,6 +55,39 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 In this example, 24 is a default value when there is no match.
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+
+[workspace-to-monitor-force-assignment]
+# https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+# Left hand side of the assignment is the workspace name
+# Right hand side of the assignment is the monitor pattern
+# Supported monitor patterns:
+# main - "Main" monitor ("main" as in System Settings → Displays → Use as)
+# secondary - Non-main monitor in case when there are only two monitors
+# <number> (e.g. 1, 2) - Sequence number of the monitor from left to right. 1-based indexing
+# <regex-pattern> (e.g. dell.*, built-in.*) - Case insensitive regex substring pattern
+# You can specify multiple patterns as an array. The first matching pattern will be used
+# move-workspace-to-monitor command has no effect for workspaces that have monitor assignment
+
+# Example
+# [workspace-to-monitor-force-assignment]
+# 1 = 1                            # Monitor sequence number from left to right. 1-based indexing
+# 2 = 'main'                       # Main monitor
+# 3 = 'secondary'                  # Non-main monitor in case when there are only two monitors
+# 4 = 'built-in'                   # Case insensitive regex substring
+# 5 = '^built-in retina display$'  # Case insensitive regex match
+# 6 = ['secondary', 'dell']        # You can specify multiple patterns. The first matching pattern will be used
+
+1 = ['main','^built-in retina display$']
+2 = ['main','^built-in retina display$']
+3 = ['main','^built-in retina display$']
+4 = ['main','^built-in retina display$']
+5 = ['main','^built-in retina display$']
+6 = ['secondary','^built-in retina display$']
+7 = ['secondary','^built-in retina display$']
+8 = ['secondary','^built-in retina display$']
+9 = ['secondary','^built-in retina display$']
+10 = ['secondary','^built-in retina display$']
+
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
@@ -86,15 +121,36 @@ outer.right =      8
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-cmd-slash = 'layout tiles horizontal vertical'
-cmd-comma = 'layout accordion horizontal vertical'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
-cmd-h = 'focus left'
-cmd-j = 'focus down'
-cmd-k = 'focus up'
-cmd-l = 'focus right'
+# Reload Config
+cmd-alt-c = 'reload-config'
 
+## Layout Bindings
+
+# Ooooh, we want to use this one typically, this is the tiling we want
+# cmd-slash = 'layout tiles horizontal vertical'
+# Good for if we wanna rapidly swap between stuff but on the same space
+# cmd-comma = 'layout accordion horizontal vertical'
+
+# Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
+# We never really used the split in sway anyways
+
+# alt-h = 'split horizontal'
+# alt-v = 'split vertical'
+alt-f = 'fullscreen'
+
+cmd-s = 'layout v_accordion' # 'layout stacking' in i3 - sway
+cmd-w = 'layout h_accordion' # 'layout tabbed' in i3 - sway
+cmd-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3 - sway
+cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3 - sway
+
+
+# Moving; See: https://nikitabobko.github.io/AeroSpace/commands#focus
+
+cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
+cmd-j = 'focus --boundaries-action wrap-around-the-workspace down'
+cmd-k = 'focus --boundaries-action wrap-around-the-workspace up'
+cmd-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-shift-h = 'move left'
@@ -102,6 +158,15 @@ cmd-shift-j = 'move down'
 cmd-shift-k = 'move up'
 cmd-shift-l = 'move right'
 
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+# TODO: use-trackpad-gestures-to-switch-workspaces
+# See: https://nikitabobko.github.io/AeroSpace/goodness
+
+# TODO: Assign Workspace to Monitor where applicable
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-1 = 'workspace 1'
@@ -113,7 +178,7 @@ ctrl-6 = 'workspace 6'
 ctrl-7 = 'workspace 7'
 ctrl-8 = 'workspace 8'
 ctrl-9 = 'workspace 9'
-ctrl-0 = 'workspace B'
+ctrl-0 = 'workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 ctrl-shift-1 = 'move-node-to-workspace 1'
@@ -125,16 +190,11 @@ ctrl-shift-6 = 'move-node-to-workspace 6'
 ctrl-shift-7 = 'move-node-to-workspace 7'
 ctrl-shift-8 = 'move-node-to-workspace 8'
 ctrl-shift-9 = 'move-node-to-workspace 9'
-ctrl-shift-0 = 'move-node-to-workspace B'
+ctrl-shift-0 = 'move-node-to-workspace 10'
 
-ctrl-shift-f = 'fullscreen'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
 
 # resizing in normal
 cmd-ctrl-h = 'resize width -50'
@@ -143,7 +203,7 @@ cmd-ctrl-k = 'resize height -50'
 cmd-ctrl-l = 'resize width +50'
 cmd-ctrl-b = 'balance-sizes'
 
-
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-r = 'mode resize'
 [mode.resize.binding]
 h = 'resize width -50'
@@ -151,27 +211,8 @@ j = 'resize height +50'
 k = 'resize height -50'
 l = 'resize width +50'
 b = 'balance-sizes'
-
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
 minus = 'resize smart -50'
 equal = 'resize smart +50'
 
 enter = 'mode main'
 esc = 'mode main'
-
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-alt-shift-c = 'reload-config'
-ctrl-shift-semicolon = 'mode service'
-[mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
-
-cmd-shift-h = ['join-with left', 'mode main']
-cmd-shift-j = ['join-with down', 'mode main']
-cmd-shift-k = ['join-with up', 'mode main']
-cmd-shift-l = ['join-with right', 'mode main']
