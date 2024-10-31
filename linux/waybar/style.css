@@ -34,8 +34,8 @@
 .modules-left {
   /* margin: 4px; */
   padding: 0px 2px;
-  background-color: rgba(79, 86, 102, 0.35);
-  /* background-color: rgba(40, 40, 40, 0); */
+  /* background-color: rgba(79, 86, 102, 0.5); */
+  background-color: rgba(40, 40, 40, 0);
   /* border-radius: 0rem 2rem 2rem 0rem; */
   border-radius: 2rem;
 }
@@ -43,8 +43,8 @@
 .modules-right {
   /* margin: 4px; */
   padding: 0px 2px;
-  background-color: rgba(79, 86, 102, 0.35);
-  /* background-color: rgba(40, 40, 40, 0); */
+  /* background-color: rgba(79, 86, 102, 0.5); */
+  background-color: rgba(40, 40, 40, 0);
   /* border-radius: 2rem 0rem 0rem 2rem; */
   border-radius: 2rem;
 }
@@ -54,12 +54,14 @@
   /* padding: 3px; */
   padding: 0px 2px;
   border-radius: 2rem;
-
+  background-color: rgba(40, 40, 40, 0);
 }
 
 window#waybar {
-  background-color: rgba(40, 44, 52, 0.70);  /* OneDark Pro background */
-  color: @fg1;
+  /* OneDark Pro background */
+  background-color: rgba(40, 44, 52, 0.80);
+  /* background-color:transparent; */
+  /* color: transparent;  */
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -69,7 +71,10 @@ window#waybar.hidden {
 }
 
 window#waybar.empty {
-  background-color: rgba(40, 44, 52, 0.70);  /* OneDark Pro background */
+/* OneDark Pro background */
+  background-color: rgba(40, 44, 52, 0.60);  
+  /* color: rgba(40, 44, 52, 0.80);   */
+  /* background-color: transparent; */
 }
 
 /* Workspaces */
