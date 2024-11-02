@@ -30,7 +30,7 @@ cmd + shift - y : yabai -m space --mirror y-axis
 cmd + shift - x : yabai -m space --mirror x-axis
 
 # toggle window float
-cmd + shift - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+cmd + shift - space: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # -- Modifying Window Size --
 
