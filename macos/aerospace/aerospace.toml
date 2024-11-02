@@ -16,7 +16,7 @@ after-login-command = []
 
 # JankyBorders has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
-after-startup-command = ['exec-and-forget /opt/homebrew/bin/borders active_color=0xff61afef inactive_color=0x00000000 width=1.5 style=round hidpi=on order=above']
+after-startup-command = ['exec-and-forget /opt/homebrew/bin/borders active_color=0xff61afef inactive_color=0x00000000 width=2.5 style=round hidpi=on order=above']
 
 # Start AeroSpace at login
 start-at-login = true
@@ -139,10 +139,10 @@ cmd-alt-c = 'reload-config'
 # alt-v = 'split vertical'
 alt-f = 'fullscreen'
 
-cmd-s = 'layout v_accordion' # 'layout stacking' in i3 - sway
-cmd-w = 'layout h_accordion' # 'layout tabbed' in i3 - sway
-cmd-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3 - sway
-cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3 - sway
+alt-s = 'layout v_accordion' # 'layout stacking' in i3 - sway
+alt-w = 'layout h_accordion' # 'layout tabbed' in i3 - sway
+alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3 - sway
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3 - sway
 
 
 # Moving; See: https://nikitabobko.github.io/AeroSpace/commands#focus
