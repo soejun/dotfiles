@@ -6,8 +6,7 @@
 
 
 ### Output configuration
-# output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
-output * bg ~/Pictures/Walls_old/Trees-22.jpg fill
+output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
 
 
 
@@ -26,39 +25,50 @@ output * bg ~/Pictures/Walls_old/Trees-22.jpg fill
 
 # Monitor Configuration
 
-## Monitor-1 Landscape and Monitor 2 Portrait (Right)
-# output eDP-1 resolution 1920x1080 pos 2560 0
-
-## Multiple Monitor Workspace Setup
-
 # use wdisplays to configure position properly
 
-# For the 29" monitor (landscape mode)
-# output DP-1 resolution 2560x1080 scale .92 scale_filter linear pos 0 649
+output HDMI-A-1 mode 3840x2160@60.000hz
+# output eDP-1 resolution 1920x1080 pos 3840 840
 
-output DP-1 resolution 2560x1440 pos 0 510 
-# For the 24" monitor (portrait mode, rotated 90 degrees)
-output HDMI-A-1 resolution 2560x1440 transform 90 pos 2560 0
-
-set $output-primary DP-1
-set $output-secondary HDMI-A-1
-
+set $output-primary HDM1-A-1
+# set $output-secondary eDP-1
 
 ## TODO - Presets for different configurations
 
+# workspace 1 output $output-primary
+# workspace 2 output $output-primary
+# workspace 3 output $output-primary
+# workspace 4 output $output-primary
+# workspace 5 output $output-primary
+# workspace 6 output $output-secondary
+# workspace 7 output $output-secondary
+# workspace 8 output $output-secondary
+# workspace 9 output $output-secondary
+# workspace 10 output $output-secondary
+
+## Multiple Monitor Workspace Setup
+
+## Monitor-1 Landscape and Monitor 2 Portrait (Right)
+# output DP-1 resolution 2560x1440 position 0,0
+# output HDMI-A-1 resolution 2560x1440 transform 90
+
 ### primary display (landscape)
-workspace 1 output $output-primary
-workspace 2 output $output-primary
-workspace 3 output $output-primary
-workspace 4 output $output-primary
-workspace 5 output $output-primary
+# workspace 1 output $output-primary
+# workspace 2 output $output-primary
+# workspace 3 output $output-primary
+# workspace 4 output $output-primary
+# workspace 5 output $output-primary
 
 ### secondary display (portrait)
-workspace 6 output $output-secondary
-workspace 7 output $output-secondary
-workspace 8 output $output-secondary
-workspace 9 output $output-secondary
-workspace 10 output $output-secondary
+# workspace 6 output $output-secondary
+# workspace 7 output $output-secondary
+# workspace 8 output $output-secondary
+# workspace 9 output $output-secondary
+# workspace 10 output $output-secondary
+
+#
+### Essentials (Always Execute)
+#
 
 #
 ### Essentials (Always Execute)
@@ -67,7 +77,10 @@ workspace 10 output $output-secondary
 # Sway autoexec
 set $schema "org.gnome.desktop.interface"
 
-# https://github.com/SylEleuth/gruvbox-plus-icon-pack
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
 exec_always {
     gsettings set $schema gtk-theme Adwaita-dark 
     gsettings set $schema icon-theme Adwaita
@@ -81,6 +94,7 @@ exec_always {
 
     # initiate swaymonad for autotiling
     "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+    ~/.config/linux/sway/clamshell.sh
 }
 
 
@@ -153,8 +167,8 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # Full screen screenshot to clipboard
     bindsym $mod+Shift+s exec grimshot copy screen
     # Area screenshot to clipboard
-    bindsym Print exec grimshot copy area
-    # bindsym $mod+Shift+a exec grimshot copy area
+    # bindsym Print exec grimshot copy area
+    bindsym $mod+Shift+a exec grimshot copy area
     # Full screen screenshot to file
     bindsym $mod+Shift+Alt+s exec grimshot save screen
     # Window screenshot to clipboard

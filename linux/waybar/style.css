@@ -27,7 +27,7 @@
 /* Global styles */
 * {
   font-family: 'CaskaydiaCove Nerd Font', 'Caskaydia Code', 'Material Design Icons', 'NerdFonts', 'FontAwesome', sans-serif;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 /* Module Styles */
@@ -150,6 +150,7 @@ window#waybar.empty #window {
 
 #battery {
   background-color: rgba(0, 0, 0, 0);
+  padding-top: 2px;
 }
 
 #battery.charging,
@@ -199,6 +200,7 @@ label:focus {
 
 #network {
   padding-top: 2px;
+  margin-right: 4px;
   background-color: transparent;
 }
 
