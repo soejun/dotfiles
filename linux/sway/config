@@ -6,7 +6,8 @@
 
 
 ### Output configuration
-output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
+# output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
+output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 
 
 
@@ -27,10 +28,10 @@ output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
 
 # use wdisplays to configure position properly
 
-output HDMI-A-1 mode 3840x2160@60.000hz
+# output HDMI-A-1 mode 3840x2160@60.000hz
 # output eDP-1 resolution 1920x1080 pos 3840 840
 
-set $output-primary HDM1-A-1
+# set $output-primary HDM1-A-1
 # set $output-secondary eDP-1
 
 ## TODO - Presets for different configurations
@@ -73,13 +74,32 @@ set $output-primary HDM1-A-1
 #
 ### Essentials (Always Execute)
 #
+# set $laptop eDP-1
+# bindswitch --reload --locked lid:on output $laptop disable
+# bindswitch --reload --locked lid:off output $laptop enable
+
+output DP-1 resolution 2560x1440 pos 0 590
+output HDMI-A-1 resolution 2560x1440 transform 90 pos 2560 0
+set $output-primary DP-1
+set $output-secondary HDMI-A-1
+
+### primary display (landscape)
+workspace 1 output $output-primary
+workspace 2 output $output-primary
+workspace 3 output $output-primary
+workspace 4 output $output-primary
+workspace 5 output $output-primary
+
+### secondary display (portrait)
+workspace 6 output $output-secondary
+workspace 7 output $output-secondary
+workspace 8 output $output-secondary
+workspace 9 output $output-secondary
+workspace 10 output $output-secondary
 
 # Sway autoexec
 set $schema "org.gnome.desktop.interface"
 
-set $laptop eDP-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
 
 exec_always {
     gsettings set $schema gtk-theme Adwaita-dark 
@@ -88,7 +108,7 @@ exec_always {
     # gsettings set $schema icon-theme Gruvbox-Plus-Dark
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
-
+    gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
     # fix wayland and sway bug
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
@@ -108,7 +128,7 @@ exec_always {
 # if you instead write several xkb_options-lines, only the last one will take effect.
 input "type:keyboard" {
 	xkb_layout us
-  xkb_options "ctrl:nocaps, ctrl:swap_lalt_lctl_lwin"
+  xkb_options "ctrl:nocaps"
 }
 
 ## set up touchpad behavior
@@ -134,7 +154,8 @@ exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1
 mouse_warping container
 focus_wrapping no
 ### Variables
-# set $mod Mod4 means $mod is physically l_ctrl but acts as super_l
+# For macos-like compatibility, Mod4 is in the same spot as 'alt' in macos
+# the goal is for a physical compatbility, not key to key compatbility
 set $mod Mod4
 
 set $left h
@@ -159,7 +180,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym alt+space exec $menu
+    bindsym $mod+Space exec $menu
 
     # Screenshot utils
     # Make this similar to macOS bindings, update karabiner accordingly
@@ -169,10 +190,11 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # Area screenshot to clipboard
     # bindsym Print exec grimshot copy area
     bindsym $mod+Shift+a exec grimshot copy area
+    bindsym $mod+Shift+w exec grimshot save area
     # Full screen screenshot to file
     bindsym $mod+Shift+Alt+s exec grimshot save screen
     # Window screenshot to clipboard
-    bindsym $mod+Shift+w exec grimshot copy window
+    # bindsym $mod+Shift+w exec grimshot copy window
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -182,11 +204,11 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym alt+Shift+c reload
+    bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-	  bindsym alt+Shift+e exec ~/.config/sway/swaypoweroff.sh
+	  bindsym $mod+Shift+e exec ~/.config/sway/swaypoweroff.sh
 
     # Lock sway
     bindsym Scroll_Lock exec ~/.config/sway/lock.sh
@@ -194,28 +216,23 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # Moving around:
 #
-
-    # Move your focus around (also applies to stacked and tabbed)
-    bindsym $mod+$down nop focus_prev_window
-    bindsym $mod+$up nop focus_next_window
+    # bindsym alt+$down nop focus_next_window
+    # bindsym alt+$up nop focus_prev_window
 
     bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
 
-    bindsym alt+Shift+j nop swap_with_next_window
-    bindsym alt+Shift+k nop swap_with_prev_window
-
-    # bindsym $mod+$down focus down
-    # bindsym $mod+$up focus up
+    # bindsym alt+Shift+j nop swap_with_next_window
+    # bindsym alt+Shift+k nop swap_with_prev_window
 
 
-    # Move the focused window with the same, but add Shift (Move the the window ("cult of vim" version))
-    # Uncomment if swaymonad breaks
-    # bindsym $mod+Shift+$left move left
-    # bindsym $mod+Shift+$down move down
-    # bindsym $mod+Shift+$up move up
-    # bindsym $mod+Shift+$right move right
+    # bindsym alt+Shift+$left move left
+    # bindsym alt+Shift+$down move down
+    # bindsym alt+Shift+$up move up
+    # bindsym alt+Shift+$right move right
 
     bindsym $mod+Shift+$left nop move left
     bindsym $mod+Shift+$down nop move down
@@ -223,9 +240,9 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     bindsym $mod+Shift+$right nop move right
 
     # TODO: Add balance
-    bindsym $mod+shift+y nop reflecty
-    bindsym $mod+shift+x nop reflectx
-    bindsym $mod+shift+t nop transpose
+    bindsym $mod+Shift+y nop reflecty
+    bindsym $mod+Shift+x nop reflectx
+    bindsym $mod+Shift+t nop transpose
 #
 # Workspaces:
 #
@@ -259,26 +276,27 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
     # respectively.
     # This is for opening up new windows of the same container
     # i.e. if firefox is focused and you do splith and do ctrl+n it'll open in that orientation
+      
+    # Command to get containers:
+    # swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true) | .representation'
+    # please actually use this lol
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
 
-    bindsym alt+b splith
-    bindsym alt+v splitv
     # Switch the current container between different layout styles
-    # normalize to use alt instead of $mod for similairty w/ Aerospace
-    bindsym alt+s layout stacking
-
-    bindsym alt+w layout tabbed
-
-    # layout toggle split is what we mainly want (SAME WITH THIS WHY IS SPLIT MAPPED TO `e`)
-    bindsym alt+e layout toggle split
+    # normalize to use $mod instead of $mod for similairty w/ Aerospace
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym alt+f fullscreen
+    bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+d focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -299,10 +317,6 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 ## Dedicated resize mode (More Precise)
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $up resize grow height 10px
     bindsym $down resize shrink height 10px
