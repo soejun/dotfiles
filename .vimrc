@@ -53,37 +53,3 @@ set whichwrap+=<,>,[,],h,l   " Allow moving the cursor through wrapped lines wit
 "
 " sudo apt install vim-gtk3 for clipboard support on gnome
 set clipboard^=unnamed,unnamedplus
-
-" " Key mappings
-
-" Normal mode
-" Clear search highlights
-nnoremap <leader>nh :noh<CR>
-
-" Move to the left window
-nnoremap <C-h> <C-w><Left>
-
-" Move to the right window
-nnoremap <C-l> <C-w><Right>
-
-" Move to the window below
-nnoremap <C-j> <C-w>j
-" Move to the window above
-nnoremap <C-k> <C-w>k
-" Split window vertically
-nnoremap <leader>sv <C-w>v
-" Split window horizontally
-nnoremap <leader>sh <C-w>s
-" Make split windows equal width and height
-nnoremap <leader>se <C-w>=
-" Close the current split window
-nnoremap <leader>sx :close<CR>
-" Save the file
-nnoremap <C-s> :w<CR>
-" Copy the entire file to the clipboard
-nnoremap <C-c> :%y+<CR>
-" Create a new buffer
-nnoremap <leader>b :enew<CR>
-
-" Don't copy the replaced text after pasting
-xnoremap p p:let @+=@0<CR>:let @"=@0<CR>
