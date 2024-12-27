@@ -7,7 +7,8 @@
 
 ### Output configuration
 # output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
-output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
+output * bg ~/Pictures/Wallpapers/victor-sales-victorsales-morocco.jpeg fill
 
 
 
@@ -78,11 +79,12 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 # bindswitch --reload --locked lid:on output $laptop disable
 # bindswitch --reload --locked lid:off output $laptop enable
 
-output DP-1 resolution 2560x1440 pos 0 590
-output HDMI-A-1 resolution 2560x1440 transform 90 pos 2560 0
-set $output-primary DP-1
-set $output-secondary HDMI-A-1
+# output DP-1 resolution 2560x1440 pos 0 590
+# output HDMI-A-1 resolution 2560x1440 transform 90 pos 2560 0
+# set $output-primary DP-1
+# set $output-secondary HDMI-A-1
 
+set $output-primary eDP-1
 ### primary display (landscape)
 workspace 1 output $output-primary
 workspace 2 output $output-primary
@@ -91,11 +93,11 @@ workspace 4 output $output-primary
 workspace 5 output $output-primary
 
 ### secondary display (portrait)
-workspace 6 output $output-secondary
-workspace 7 output $output-secondary
-workspace 8 output $output-secondary
-workspace 9 output $output-secondary
-workspace 10 output $output-secondary
+workspace 6 output $output-primary
+workspace 7 output $output-primary
+workspace 8 output $output-primary
+workspace 9 output $output-primary
+workspace 10 output $output-primary
 
 # Sway autoexec
 set $schema "org.gnome.desktop.interface"
