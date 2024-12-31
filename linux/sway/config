@@ -28,7 +28,7 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 
 # Laptop Clamshell/Single External Monitor
 set $laptop eDP-1
-output HDMI-A-1 mode 2560x1440@60.000hz 
+output DP-1 mode 3840x2160@60.00hz 
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
@@ -68,8 +68,11 @@ exec_always {
 
     # Tiling addon
     "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+<<<<<<< HEAD
 
     # Clamshell mode
+=======
+>>>>>>> f941c7f (refactor: Remove dead code and clean up)
     ~/.config/sway/utils/clamshell.sh
 }
 
