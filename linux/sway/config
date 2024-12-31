@@ -4,13 +4,10 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+### Wallpaper
+output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 
 ### Output configuration
-# output * bg ~/Pictures/onedark-wallpapers-main/misc/od_road.jpg fill
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
-output * bg ~/Pictures/Wallpapers/victor-sales-victorsales-morocco.jpeg fill
-
-
 
 ### Idle configuration
 #
@@ -25,98 +22,55 @@ output * bg ~/Pictures/Wallpapers/victor-sales-victorsales-morocco.jpeg fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-# Monitor Configuration
+## Monitor Configuration
+# Use wdisplays to configure position properly
+#
 
-# use wdisplays to configure position properly
+# Laptop Clamshell/Single External Monitor
+set $laptop eDP-1
+output HDMI-A-1 mode 2560x1440@60.000hz 
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
-# output HDMI-A-1 mode 3840x2160@60.000hz
-# output eDP-1 resolution 1920x1080 pos 3840 840
 
-# set $output-primary HDM1-A-1
-# set $output-secondary eDP-1
-
-## TODO - Presets for different configurations
-
-# workspace 1 output $output-primary
-# workspace 2 output $output-primary
-# workspace 3 output $output-primary
-# workspace 4 output $output-primary
-# workspace 5 output $output-primary
-# workspace 6 output $output-secondary
-# workspace 7 output $output-secondary
-# workspace 8 output $output-secondary
-# workspace 9 output $output-secondary
-# workspace 10 output $output-secondary
-
-## Multiple Monitor Workspace Setup
+### Landscape Portrait Layout
 
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
 # output DP-1 resolution 2560x1440 position 0,0
 # output HDMI-A-1 resolution 2560x1440 transform 90
 
-### primary display (landscape)
+## primary display (landscape)
 # workspace 1 output $output-primary
 # workspace 2 output $output-primary
 # workspace 3 output $output-primary
 # workspace 4 output $output-primary
 # workspace 5 output $output-primary
 
-### secondary display (portrait)
+## secondary display (portrait)
 # workspace 6 output $output-secondary
 # workspace 7 output $output-secondary
 # workspace 8 output $output-secondary
 # workspace 9 output $output-secondary
 # workspace 10 output $output-secondary
 
-#
 ### Essentials (Always Execute)
-#
 
-#
-### Essentials (Always Execute)
-#
-# set $laptop eDP-1
-# bindswitch --reload --locked lid:on output $laptop disable
-# bindswitch --reload --locked lid:off output $laptop enable
-
-# output DP-1 resolution 2560x1440 pos 0 590
-# output HDMI-A-1 resolution 2560x1440 transform 90 pos 2560 0
-# set $output-primary DP-1
-# set $output-secondary HDMI-A-1
-
-set $output-primary eDP-1
-### primary display (landscape)
-workspace 1 output $output-primary
-workspace 2 output $output-primary
-workspace 3 output $output-primary
-workspace 4 output $output-primary
-workspace 5 output $output-primary
-
-### secondary display (portrait)
-workspace 6 output $output-primary
-workspace 7 output $output-primary
-workspace 8 output $output-primary
-workspace 9 output $output-primary
-workspace 10 output $output-primary
-
-# Sway autoexec
 set $schema "org.gnome.desktop.interface"
-
-
 exec_always {
     gsettings set $schema gtk-theme Adwaita-dark 
     gsettings set $schema icon-theme Adwaita
-    # gsettings set $schema gtk-theme Gruvbox-Dark-Soft 
-    # gsettings set $schema icon-theme Gruvbox-Plus-Dark
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
     gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
-    # fix wayland and sway bug
+
+    # Fix for bug between Sway and Wayland
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-    # initiate swaymonad for autotiling
+    # Tiling addon
     "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
-    ~/.config/linux/sway/clamshell.sh
+
+    # Clamshell mode
+    ~/.config/sway/utils/clamshell.sh
 }
 
 
@@ -124,23 +78,20 @@ exec_always {
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-## setup keyboard configuration
+## Keyboard configuration
+# To activate multiple options, list them separated by a comma, e.g., xkb_options caps:escape,altwin:swap_lalt_lwin;
+# Writing multiple xkb_options lines will result in only the last one being applied.
 
-# Note that to trigger several options, you need to list them separated with a comma, e.g. xkb_options caps:escape,altwin:swap_lalt_lwin;
-# if you instead write several xkb_options-lines, only the last one will take effect.
 input "type:keyboard" {
 	xkb_layout us
   xkb_options "ctrl:nocaps"
 }
 
-## set up touchpad behavior
 input "type:touchpad" {
   tap enabled
   natural_scroll enabled
 }
 
-## set up external mouse behavior
-# Enable natural scrolling for the UNIMOUSE
 input "2867:4181:Contour_Design_UNIMOUSE" {
     natural_scroll enabled
 }
@@ -149,15 +100,13 @@ input "1133:45088:MX_Vertical_Mouse" {
   natural_scroll enabled
 }
 
-# Disable the middle mouse button action no map so it won't override
+# Disable the middle mouse button action to prevent it from being overridden.
 exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1 0 3
-
 
 mouse_warping container
 focus_wrapping no
-### Variables
-# For macos-like compatibility, Mod4 is in the same spot as 'alt' in macos
-# the goal is for a physical compatbility, not key to key compatbility
+
+### Key Bindings and Applications
 set $mod Mod4
 
 set $left h
@@ -167,157 +116,130 @@ set $right l
 set $term kitty
 set $menu wofi --show drun -i | xargs swaymsg exec --
 
-
-### Key bindings
-#
-# Basics:
-#
-   # Start a terminal
-   bindsym $mod+Return exec $term
-
-   # unneeded, we have never used this i'm pretty sure
-	 # bindsym $mod+shift+s exec "kitty /home/hermes/.config/sway/config"
-
-    # Kill focused window
-    bindsym $mod+q kill
-
-    # Start your launcher
-    bindsym $mod+Space exec $menu
-
-    # Screenshot utils
-    # Make this similar to macOS bindings, update karabiner accordingly
-
-    # Full screen screenshot to clipboard
-    bindsym $mod+Shift+s exec grimshot copy screen
-    # Area screenshot to clipboard
-    # bindsym Print exec grimshot copy area
-    bindsym $mod+Shift+a exec grimshot copy area
-    bindsym $mod+Shift+w exec grimshot save area
-    # Full screen screenshot to file
-    bindsym $mod+Shift+Alt+s exec grimshot save screen
-    # Window screenshot to clipboard
-    # bindsym $mod+Shift+w exec grimshot copy window
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-	  bindsym $mod+Shift+e exec ~/.config/sway/swaypoweroff.sh
-
-    # Lock sway
-    bindsym Scroll_Lock exec ~/.config/sway/lock.sh
-
-#
-# Moving around:
-#
-    # bindsym alt+$down nop focus_next_window
-    # bindsym alt+$up nop focus_prev_window
-
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+# Start a terminal
+bindsym $mod+Return exec $term
 
 
-    # bindsym alt+Shift+j nop swap_with_next_window
-    # bindsym alt+Shift+k nop swap_with_prev_window
+# Kill focused window
+bindsym $mod+q kill
+
+# Start your launcher
+bindsym $mod+Space exec $menu
+
+## Screenshot Bindings
+
+bindsym $mod+Shift+s exec grimshot copy screen
+bindsym $mod+Shift+Alt+s exec grimshot save screen
+bindsym $mod+Shift+a exec grimshot copy area
+bindsym $mod+Shift+w exec grimshot save area
+# TODO: Fix binding for copy window
+# bindsym $mod+Shift+w exec grimshot copy window 
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Change normal to inverse to use left mouse button for resizing and right mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload Sway
+bindsym $mod+Shift+c reload
+
+bindsym $mod+Shift+e exec ~/.config/sway/utils/power_management.sh
+bindsym Scroll_Lock exec ~/.config/sway/utils/lock.sh
+
+## Moving Around:
+
+# bindsym alt+$down nop focus_next_window
+# bindsym alt+$up nop focus_prev_window
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 
-    # bindsym alt+Shift+$left move left
-    # bindsym alt+Shift+$down move down
-    # bindsym alt+Shift+$up move up
-    # bindsym alt+Shift+$right move right
+# bindsym alt+Shift+j nop swap_with_next_window
+# bindsym alt+Shift+k nop swap_with_prev_window
+# bindsym alt+Shift+$left move left
+# bindsym alt+Shift+$down move down
+# bindsym alt+Shift+$up move up
+# bindsym alt+Shift+$right move right
 
-    bindsym $mod+Shift+$left nop move left
-    bindsym $mod+Shift+$down nop move down
-    bindsym $mod+Shift+$up nop move up
-    bindsym $mod+Shift+$right nop move right
+bindsym $mod+Shift+$left nop move left
+bindsym $mod+Shift+$down nop move down
+bindsym $mod+Shift+$up nop move up
+bindsym $mod+Shift+$right nop move right
 
-    # TODO: Add balance
-    bindsym $mod+Shift+y nop reflecty
-    bindsym $mod+Shift+x nop reflectx
-    bindsym $mod+Shift+t nop transpose
-#
+# TODO: Add balance
+bindsym $mod+Shift+y nop reflecty
+bindsym $mod+Shift+x nop reflectx
+bindsym $mod+Shift+t nop transpose
+
+
 # Workspaces:
+bindsym ctrl+1 workspace number 1
+bindsym ctrl+2 workspace number 2
+bindsym ctrl+3 workspace number 3
+bindsym ctrl+4 workspace number 4
+bindsym ctrl+5 workspace number 5
+bindsym ctrl+6 workspace number 6
+bindsym ctrl+7 workspace number 7
+bindsym ctrl+8 workspace number 8
+bindsym ctrl+9 workspace number 9
+bindsym ctrl+0 workspace number 10
+
+bindsym ctrl+Shift+1 move container to workspace number 1
+bindsym ctrl+Shift+2 move container to workspace number 2
+bindsym ctrl+Shift+3 move container to workspace number 3
+bindsym ctrl+Shift+4 move container to workspace number 4
+bindsym ctrl+Shift+5 move container to workspace number 5
+bindsym ctrl+Shift+6 move container to workspace number 6
+bindsym ctrl+Shift+7 move container to workspace number 7
+bindsym ctrl+Shift+8 move container to workspace number 8
+bindsym ctrl+Shift+9 move container to workspace number 9
+bindsym ctrl+Shift+0 move container to workspace number 10
+
+# Layout:
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits respectively.
 #
-    # Switch to workspace
-    bindsym ctrl+1 workspace number 1
-    bindsym ctrl+2 workspace number 2
-    bindsym ctrl+3 workspace number 3
-    bindsym ctrl+4 workspace number 4
-    bindsym ctrl+5 workspace number 5
-    bindsym ctrl+6 workspace number 6
-    bindsym ctrl+7 workspace number 7
-    bindsym ctrl+8 workspace number 8
-    bindsym ctrl+9 workspace number 9
-    bindsym ctrl+0 workspace number 10
-    # Move focused container to workspace and switch to workspace
-    bindsym ctrl+Shift+1 move container to workspace number 1
-    bindsym ctrl+Shift+2 move container to workspace number 2
-    bindsym ctrl+Shift+3 move container to workspace number 3
-    bindsym ctrl+Shift+4 move container to workspace number 4
-    bindsym ctrl+Shift+5 move container to workspace number 5
-    bindsym ctrl+Shift+6 move container to workspace number 6
-    bindsym ctrl+Shift+7 move container to workspace number 7
-    bindsym ctrl+Shift+8 move container to workspace number 8
-    bindsym ctrl+Shift+9 move container to workspace number 9
-    bindsym ctrl+Shift+0 move container to workspace number 10
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    # This is for opening up new windows of the same container
-    # i.e. if firefox is focused and you do splith and do ctrl+n it'll open in that orientation
-      
-    # Command to get containers:
-    # swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true) | .representation'
-    # please actually use this lol
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+# Container retrieval: swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true) | .representation'
 
-    # Switch the current container between different layout styles
-    # normalize to use $mod instead of $mod for similairty w/ Aerospace
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+# Container Split
+bindsym $mod+b splith
+bindsym $mod+v splitv
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+d focus mode_toggle
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
+# Swap focus between the tiling area and the floating area
+bindsym $mod+d focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+
 # Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-## Dedicated resize mode (More Precise)
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+
+# Resizing Containers:
+
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $up resize grow height 10px
@@ -336,12 +258,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
 ## Resizing in default mode
-    bindsym $mod+ctrl+$right  resize grow width 30px
-    bindsym $mod+ctrl+$left  resize shrink width 30px
-    bindsym $mod+ctrl+$up  resize grow height 30px
-    bindsym $mod+ctrl+$down  resize shrink height 30px
+bindsym $mod+ctrl+$right  resize grow width 30px
+bindsym $mod+ctrl+$left  resize shrink width 30px
+bindsym $mod+ctrl+$up  resize grow height 30px
+bindsym $mod+ctrl+$down  resize shrink height 30px
 
 mode "layout" {
   bindsym t nop set_layout tall
@@ -363,18 +284,14 @@ mode "layout" {
 
 bindsym $mod+alt+ctrl+l mode "layout"
 
-# Volume Control - pipewire and pamixer
-
   bindsym --locked XF86AudioMute exec 'pamixer --toggle-mute'
   bindsym --locked XF86AudioLowerVolume exec 'pamixer --decrease 5'
   bindsym --locked XF86AudioRaiseVolume exec 'pamixer --increase 5'
   bindsym --locked XF86AudioMicMute exec 'pamixer --default-source --toggle-mute'
 
-# Laptop Brightness Control
   bindsym --locked XF86MonBrightnessDown exec 'light -U 5.00'
   bindsym --locked XF86MonBrightnessUp exec 'light -A 5.00'
 
-# Status Bar
 bar {
 	swaybar_command waybar
 }
@@ -384,5 +301,4 @@ gaps outer 3
 
 default_border pixel 2
 
-# onedark-pro borders-blue
 client.focused #61AFEF #61AFEF #5c6370 #61AFEF
