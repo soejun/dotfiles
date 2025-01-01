@@ -1,8 +1,17 @@
-macos/.DS_Store
+**/__pycache__/
+
+# Ignore the .git directory
+/.git/
+
+# Ignore temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Ignore OS-specific files
 .DS_Store
-macos/karabiner/assets/
-macos/karabiner/automatic_backups/
-logfile
+Thumbs.db
 
-
-ranger/plugins/__pycache__
+# Ignore backup files
+*~
