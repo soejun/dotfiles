@@ -16,3 +16,4 @@ Thumbs.db
 # Ignore backup files
 *~
 config/kitty/kitty.conf
+config/ranger/plugins/__pycache__/__init__.cpython-311.opt-1.pyc
