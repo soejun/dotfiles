@@ -2,10 +2,10 @@
   "layer": "top",
   "position": "top",
   "modules-left": [
-    "sway/workspaces",
-    "sway/window"
+    "sway/workspaces"
   ],
   "modules-center": [
+    "sway/window",
     "sway/mode"
   ],
   "modules-right": [
@@ -16,10 +16,10 @@
     "battery",
     "clock"
   ],
-  "height": 32,
+  "height": 16,
   "sway/window": {
     "icon": false,
-    "icon-size": 32,
+    "icon-size": 16,
     "format": "<span size=\"medium\" font_weight=\"1000\" color=\"#ABB2BF\">{}</span>",
     "max-length": 75
   },
@@ -33,16 +33,56 @@
       "default": ""
     },
     "persistent-workspaces": {
-      "1": ["DP-1","HDMI-A-1","DP-2"],
-      "2": ["DP-1","HDMI-A-1","DP-2"],
-      "3": ["DP-1","HDMI-A-1","DP-2"],
-      "4": ["DP-1","HDMI-A-1","DP-2"],
-      "5": ["DP-1","HDMI-A-1","DP-2"],
-      "6": ["HDMI-A-1", "DP-1", "eDP-1"],
-      "7": ["HDMI-A-1", "DP-1", "eDP-1"],
-      "8": ["HDMI-A-1", "DP-1", "eDP-1"],
-      "9": ["HDMI-A-1", "DP-1", "eDP-1"],
-      "10": ["HDMI-A-1", "DP-1", "eDP-1"]
+      "1": [
+        "DP-1",
+        "HDMI-A-1",
+        "DP-2"
+      ],
+      "2": [
+        "DP-1",
+        "HDMI-A-1",
+        "DP-2"
+      ],
+      "3": [
+        "DP-1",
+        "HDMI-A-1",
+        "DP-2"
+      ],
+      "4": [
+        "DP-1",
+        "HDMI-A-1",
+        "DP-2"
+      ],
+      "5": [
+        "DP-1",
+        "HDMI-A-1",
+        "DP-2"
+      ],
+      "6": [
+        "HDMI-A-1",
+        "DP-1",
+        "eDP-1"
+      ],
+      "7": [
+        "HDMI-A-1",
+        "DP-1",
+        "eDP-1"
+      ],
+      "8": [
+        "HDMI-A-1",
+        "DP-1",
+        "eDP-1"
+      ],
+      "9": [
+        "HDMI-A-1",
+        "DP-1",
+        "eDP-1"
+      ],
+      "10": [
+        "HDMI-A-1",
+        "DP-1",
+        "eDP-1"
+      ]
     }
   },
   "sway/mode": {
@@ -59,23 +99,27 @@
   },
   "memory": {
     "interval": 15,
-    "format": "<span color=\"#61AFEF\" size=\"large\" rise=\"-2.5pt\">󰍛 </span><span font_weight=\"600\" rise=\"-1.5pt\" color=\"#ABB2BF\">{}%</span>",
+    "format": "<span color=\"#61AFEF\" size=\"medium\">  </span><span font_weight=\"600\" color=\"#ABB2BF\">{}%</span>",
     "max-length": 10
   },
   "pulseaudio": {
-    "format": "<span size=\"large\" color=\"#98C379\">{icon}</span>",
-    "format-icons": [
-      "󰝟",
-      "",
-      "",
-      ""
-    ],
-    "on-click": "pavucontrol",
-    "levels": {
-      "low": 30,
-      "medium": 70,
-      "high": 100
-    }
+    //"scroll-step": 1,
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
   },
   "network": {
     "format-wifi": "<span size=\"medium\" color=\"#ABB2BF\">{icon}</span>",
@@ -113,4 +157,3 @@
     "format": "<span font_weight=\"600\">{:%a %b. %d %I:%M %p}</span>"
   }
 }
-

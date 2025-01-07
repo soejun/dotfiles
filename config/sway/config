@@ -27,31 +27,33 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 #
 
 # Laptop Clamshell/Single External Monitor
-set $laptop eDP-1
-output DP-1 mode 3840x2160@60.00hz 
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
+# set $laptop eDP-1
+# output DP-1 mode 3840x2160@60.00hz 
+# bindswitch --reload --locked lid:on output $laptop disable
+# bindswitch --reload --locked lid:off output $laptop enable
 
 
 ### Landscape Portrait Layout
 
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
-# output DP-1 resolution 2560x1440 position 0,0
-# output HDMI-A-1 resolution 2560x1440 transform 90
-
 ## primary display (landscape)
-# workspace 1 output $output-primary
-# workspace 2 output $output-primary
-# workspace 3 output $output-primary
-# workspace 4 output $output-primary
-# workspace 5 output $output-primary
-
 ## secondary display (portrait)
-# workspace 6 output $output-secondary
-# workspace 7 output $output-secondary
-# workspace 8 output $output-secondary
-# workspace 9 output $output-secondary
-# workspace 10 output $output-secondary
+output DP-1 resolution 2560x1440 position 0,0
+output HDMI-A-1 resolution 2560x1440 transform 90
+
+set $output-primary DP-1
+set $output-secondary HDMI-A-1
+
+workspace 1 output $output-primary
+workspace 2 output $output-primary
+workspace 3 output $output-primary
+workspace 4 output $output-primary
+workspace 5 output $output-primary
+workspace 6 output $output-secondary
+workspace 7 output $output-secondary
+workspace 8 output $output-secondary
+workspace 9 output $output-secondary
+workspace 10 output $output-secondary
 
 ### Essentials (Always Execute)
 
@@ -68,11 +70,6 @@ exec_always {
 
     # Tiling addon
     "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
-<<<<<<< HEAD
-
-    # Clamshell mode
-=======
->>>>>>> f941c7f (refactor: Remove dead code and clean up)
     ~/.config/sway/utils/clamshell.sh
 }
 
@@ -304,4 +301,5 @@ gaps outer 3
 
 default_border pixel 2
 
-client.focused #61AFEF #61AFEF #5c6370 #61AFEF
+client.focused #8ec07c #8ec07c #665c54 #8ec07c
+# client.focused #61AFEF #61AFEF #5c6370 #61AFEF
