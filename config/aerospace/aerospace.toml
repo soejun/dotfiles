@@ -17,7 +17,7 @@ after-login-command = []
 # JankyBorders has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
 after-startup-command = [
-  'exec-and-forget borders active_color=0xff61afef inactive_color=0x00000000 width=2.0 style=round hidpi=on order=above',
+  'exec-and-forget borders active_color=0xff8ec07c inactive_color=0x00000000 width=2.0 style=round hidpi=on order=above',
 ]
 
 # Start AeroSpace at login
@@ -203,6 +203,13 @@ alt-ctrl-k = 'resize height -50'
 alt-ctrl-l = 'resize width +50'
 alt-ctrl-b = 'balance-sizes'
 
+# ctrl-g = '''exec-and-forget osascript -e '
+# tell application "Safari"
+#     make new document at end of documents
+#     activate
+# end tell'
+# '''
+#
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-r = 'mode resize'
 [mode.resize.binding]
@@ -219,21 +226,22 @@ esc = 'mode main'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run='move-node-to-workspace 10'
+run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run='move-node-to-workspace 10'
+run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run='move-node-to-workspace 10'
+run = 'move-node-to-workspace 10'
 
 [[on-window-detected]]
 if.app-id = 'com.arobas-music.guitarpro8'
 if.app-name-regex-substring = 'guitarpro'
-run='move-node-to-workspace 4'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.valvesoftware.steam'
-run=['layout tiling', 'move-node-to-workspace 8']
+run = ['layout tiling', 'move-node-to-workspace 8']
+
