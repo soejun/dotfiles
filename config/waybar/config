@@ -20,70 +20,13 @@
   "sway/window": {
     "icon": false,
     "icon-size": 16,
-    "format": "<span size=\"medium\" font_weight=\"1000\" color=\"#ABB2BF\">{}</span>",
-    "max-length": 75
+    "format": "<span size=\"medium\" font_weight=\"600\" color=\"#ABB2BF\">{}</span>",
+    "max-length": 1000
   },
   "sway/workspaces": {
     "all-outputs": false,
     "disable-scroll": true,
-    "format": "<span size=\"medium\" font_weight=\"700\" color=\"#ABB2BF\">{icon}</span>",
-    "format-icons": {
-      "urgent": "",
-      "focused": "",
-      "default": ""
-    },
-    "persistent-workspaces": {
-      "1": [
-        "DP-1",
-        "HDMI-A-1",
-        "DP-2"
-      ],
-      "2": [
-        "DP-1",
-        "HDMI-A-1",
-        "DP-2"
-      ],
-      "3": [
-        "DP-1",
-        "HDMI-A-1",
-        "DP-2"
-      ],
-      "4": [
-        "DP-1",
-        "HDMI-A-1",
-        "DP-2"
-      ],
-      "5": [
-        "DP-1",
-        "HDMI-A-1",
-        "DP-2"
-      ],
-      "6": [
-        "HDMI-A-1",
-        "DP-1",
-        "eDP-1"
-      ],
-      "7": [
-        "HDMI-A-1",
-        "DP-1",
-        "eDP-1"
-      ],
-      "8": [
-        "HDMI-A-1",
-        "DP-1",
-        "eDP-1"
-      ],
-      "9": [
-        "HDMI-A-1",
-        "DP-1",
-        "eDP-1"
-      ],
-      "10": [
-        "HDMI-A-1",
-        "DP-1",
-        "eDP-1"
-      ]
-    }
+    "format": "<span size=\"medium\" font_weight=\"600\" color=\"#ABB2BF\">{name}</span>"
   },
   "sway/mode": {
     "format": "<span size=\"medium\" color=\"#61AFEF\" font_weight=\"800\">{}</span>"
@@ -93,18 +36,18 @@
     "spacing": 10
   },
   "cpu": {
-    "interval": 5,
-    "format": "<span color=\"#D19A66\">  </span><span font_weight=\"600\" color=\"#ABB2BF\">{}%</span>",
+    "interval": 1,
+    "format": "<span font_weight=\"500\">CPU: {usage}%</span>",
     "max-length": 10
   },
   "memory": {
-    "interval": 15,
-    "format": "<span color=\"#61AFEF\" size=\"medium\">  </span><span font_weight=\"600\" color=\"#ABB2BF\">{}%</span>",
-    "max-length": 10
+    "interval": 1,
+    "format": "<span font_weight=\"500\">MEMORY: {percentage}%</span>",
+    "max-length": 15
   },
   "pulseaudio": {
     //"scroll-step": 1,
-    "format": "{icon}",
+    "format": "<span size=\"medium\">{icon}</span>",
     "format-bluetooth": "{icon}",
     "format-muted": "",
     "format-icons": {
@@ -141,7 +84,7 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "{icon}  <span color=\"#ABB2BF\">{capacity}%</span>",
+    "format": "{icon}",
     "format-charging": "<span color=\"#98C379\"> {capacity}%</span>",
     "format-plugged": "<span color=\"#98C379\"> {capacity}%</span>",
     "format-alt": "{time} {icon}",
