@@ -259,10 +259,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## Resizing in default mode
-bindsym $mod+ctrl+$right  resize grow width 30px
-bindsym $mod+ctrl+$left  resize shrink width 30px
-bindsym $mod+ctrl+$up  resize grow height 30px
-bindsym $mod+ctrl+$down  resize shrink height 30px
+bindsym $mod+ctrl+$right  resize grow width 50px
+bindsym $mod+ctrl+$left  resize shrink width 50px
+bindsym $mod+ctrl+$up  resize grow height 50px
+bindsym $mod+ctrl+$down  resize shrink height 50px
 
 mode "layout" {
   bindsym t nop set_layout tall
