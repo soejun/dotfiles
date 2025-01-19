@@ -64,6 +64,7 @@ exec_always {
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
     gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
+    pulseaudio --start
 
     # Fix for bug between Sway and Wayland
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

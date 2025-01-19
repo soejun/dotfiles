@@ -1,0 +1,4 @@
+.include /etc/pulse/default.pa
+
+load-module module-ladspa-sink sink_name=dsp sink_master=alsa_output.usb-Audioengine_LLC_Audioengine_2__AE202010001A2002-00.analog-stereo plugin=ladspa_dsp label=ladspa_dsp
+set-default-sink dsp
