@@ -225,7 +225,7 @@ bindsym $mod+d focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
-
+bindsym $mod+F2 exec sh -c 'new_name=$(wofi -dmenu -p "Rename container: "); swaymsg title_format "$new_name"'
 
 # Scratchpad:
 # Sway has a "scratchpad", which is a bag of holding for windows.
