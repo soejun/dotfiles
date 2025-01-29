@@ -123,9 +123,12 @@ unsetopt BEEP
 
 eval "$(register-python-argcomplete pipx)"
 alias python='python3'
-alias supython='sudo -E env PATH="$PATH"'
+# do this because even if pyenv virtualenv is activated pip defaults to systemwide
+# pyenv exec pip install -r requirements.txt
 
-eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/onedark_pro.omp.json)"
+# https://github.com/paololazzari/play
+# Running play in docker for read only mode
+alias play-docker='docker run -e "TERM=xterm-256color" --rm -it -v "$(pwd)":$(pwd) -w "$(pwd)" plazzari/play:latest'
 
 export MANPAGER="nvim +Man!"
 export EDITOR=nvim
@@ -153,5 +156,39 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh" 
 
+
+# function fzf_cd() {
+#   cd $(find . \( \
+#     -path "./.git" -o \
+#     -path "./.dotnet" -o \
+#     -path "./debug" -o \
+#     -path "./bin" -o \
+#     -path "./obj" -o \
+#     -path "./.idea" -o \
+#     -path "./.fleet" -o \
+#     -path "./node_modules" -o \
+#     -path "./volumes" -o \
+#     -path "./.terraform" -o \
+#     -path "./Library" -o \
+#     -path "./Pictures" -o \
+#     -path "./Documents" -o \
+#     -path "./.local" -o \
+#     -path "./.nuget" -o \
+#     -path "./.npm" -o \
+#     -path "./go" -o \
+#     -path "./.oh-my-zsh" -o \
+#     -path "./.oh-my-bash" -o \
+#     -path "./.cache" -o \
+#     -path "./.vscode" -o \
+#     -path "./.rustup" -o \
+#     -path "./.cargo" -o \
+#     -path "./.quokka" -o \
+#     -path "./.vscode-insiders" -o \
+#     -path "./.*" ! -path "./.config" \
+#   \) -prune -o -type d -print | fzf)
+# }
+#
+# zle -N fzf_cd
+# bindkey '^F' fzf_cd
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
