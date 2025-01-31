@@ -38,8 +38,8 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
 ## primary display (landscape)
 ## secondary display (portrait)
-output DP-1 resolution 2560x1440 position 0,0
-output HDMI-A-1 resolution 2560x1440 transform 90
+output DP-1 resolution 3840x2160  position 0,0
+output HDMI-A-1 resolution 3840x2160 position 3840,0
 
 set $output-primary DP-1
 set $output-secondary HDMI-A-1
@@ -69,8 +69,12 @@ exec_always {
     # Fix for bug between Sway and Wayland
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-    # Tiling addon
+    ## Tiling addons
+    # swaymonad
     "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+    # autotiling, install with pipx
+    "pkill -f 'autotiling?';"
+    autotiling -w 1 2 3 4 5 6 7 8 9 
     ~/.config/sway/utils/clamshell.sh
 }
 
