@@ -74,7 +74,8 @@ exec_always {
     "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
     # autotiling, install with pipx
     "pkill -f 'autotiling?';"
-    autotiling -w 1 2 3 4 5 6 7 8 9 
+    # autotiling --limit 2
+    autotiling
     ~/.config/sway/utils/clamshell.sh
 }
 
