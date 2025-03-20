@@ -2,13 +2,13 @@
   "layer": "top",
   "position": "top",
   "modules-left": [
-    "sway/workspaces"
+    "sway/window"
   ],
   "modules-center": [
-    "sway/window",
-    "sway/mode"
+    "sway/mode",
   ],
   "modules-right": [
+    "sway/workspaces",
     "cpu",
     "memory",
     "pulseaudio",
@@ -16,7 +16,7 @@
     "battery",
     "clock"
   ],
-  "height": 16,
+  "height": 24,
   "sway/window": {
     "icon": false,
     "icon-size": 16,
