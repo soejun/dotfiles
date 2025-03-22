@@ -149,16 +149,16 @@ alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3 - sway
 
 # Moving; See: https://nikitabobko.github.io/AeroSpace/commands#focus
 
-# alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
-# alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
-# alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
-# alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
-#
+alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+
 # Single Monitor Setup
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# alt-h = 'focus left'
+# alt-j = 'focus down'
+# alt-k = 'focus up'
+# alt-l = 'focus right'
 
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
@@ -210,6 +210,14 @@ alt-ctrl-k = 'resize height -50'
 alt-ctrl-l = 'resize width +50'
 alt-ctrl-b = 'balance-sizes'
 
+
+ctrl-g = '''exec-and-forget osascript -e '
+tell application "Firefox"
+    make new document at end of documents
+    activate
+end tell'
+'''
+
 # ctrl-g = '''exec-and-forget osascript -e '
 # tell application "Safari"
 #     make new document at end of documents
@@ -252,3 +260,6 @@ run = 'move-node-to-workspace 4'
 if.app-id = 'com.valvesoftware.steam'
 run = ['layout tiling', 'move-node-to-workspace 8']
 
+
+
+## WARNING: Microsoft Word currently crashes with AeroSpace
