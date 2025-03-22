@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 rm -rf "${HOME}/.local/state/nvim"
 # exclude dadbod_ui
