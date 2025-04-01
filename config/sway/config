@@ -137,7 +137,7 @@ bindsym $mod+Space exec $menu
 
 ## Screenshot Bindings
 
-bindsym $mod+Shift+s exec grimshot copy screen
+bindsym $mod+Shift+s exec grimshot copy active
 bindsym $mod+Shift+Alt+s exec grimshot save screen
 bindsym $mod+Shift+a exec grimshot copy area
 bindsym $mod+Shift+w exec grimshot save area
