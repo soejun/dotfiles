@@ -1,27 +1,9 @@
-
-/*
- *
- * OneDark Pro color scheme for Waybar
- *
- */
-
-@define-color bg0_hard #3F4451;   /* Background (dark) */
-@define-color bg0 #282C34;        /* Background */
-@define-color bg0_soft #4F5666;   /* Inactive background */
-@define-color bg1 #D7DAE0;        /* Tab bar active background */
-@define-color bg2 #ABB2BF;        /* Inactive tab foreground */
-@define-color bg3 #ABB2BF;        /* Selection background */
-@define-color fg0 #ABB2BF;        /* Foreground */
-@define-color fg1 #ABB2BF;        /* Foreground (bright) */
-@define-color fg2 #D7DAE0;        /* Bright white (active tab) */
+@define-color bg0 #121212;        /* Background */
+@define-color bg1 #2C2C2C;        /* Tab bar active background */
+@define-color fg1 #FFFFFF;        /* Foreground (bright) */
 @define-color red #E06C75;        /* Red */
 @define-color soft_red #BE5046;   /* Softer Red */
 @define-color green #98C379;      /* Green */
-@define-color yellow #D19A66;     /* Yellow */
-@define-color blue #61AFEF;       /* Blue */
-@define-color purple #C678DD;     /* Purple */
-@define-color aqua #56B6C2;       /* Cyan */
-@define-color orange #D19A66;     /* Orange */
 
 * {
   font-family: 'Maple Mono NF:style=Bold';
@@ -33,16 +15,14 @@
 
 .modules-left {
   background-color: rgba(40, 40, 40, 0);
-  border-radius: 2rem;
+  margin-left: 8px;
 }
 
 .modules-right {
   background-color: rgba(40, 40, 40, 0);
-  border-radius: 2rem;
 }
 
 .modules-center {
-  border-radius: 2rem;
   background-color: rgba(40, 40, 40, 0);
 }
 
@@ -62,7 +42,6 @@ window#waybar.empty {
 
 #workspaces {
   background-color: rgba(63, 68, 81, 0.0); 
-  border-radius: 1rem;
 }
 
 #workspaces button {
@@ -73,14 +52,12 @@ window#waybar.empty {
 }
 
 #workspaces button:hover {
-  background: @bg2;
+  background: @bg1;
 }
 
 #workspaces button.focused {
-  color: @blue;
-  border-bottom: 2px solid @bg3;
-  background-color:rgba(40, 44, 52, 1.0);
-  /* background-color: rgba(63, 68, 81, .90);  */
+  color: @fg1;
+  background-color: @bg1;
 }
 
 #workspaces button.urgent {
@@ -106,7 +83,6 @@ window#waybar.empty {
 #mode,
 #idle_inhibitor,
 #mpd {
-  /* border-radius: 2rem; */
   padding-left: 4px;
   padding-right: 4px;
   margin-left: 4px;
@@ -122,9 +98,6 @@ window#waybar.empty {
   margin-top: 2px;
   margin-bottom: 2px;
   background-color: transparent;
-  border-radius: 2rem;
-  /* padding-left: 8px; */
-  /* padding-right: 8px; */
 }
 
 window#waybar.empty #window {
@@ -168,61 +141,8 @@ label:focus {
   background-color: #000000;
 }
 
-#cpu {
-  background-color: transparent;
-}
-
-#memory {
-  background-color: transparent;
-}
-
-#disk {
-  background-color: @orange;
-}
-
-#backlight {
-  background-color: @aqua;
-}
-
 #network {
   background-color: transparent;
-
-}
-
-#network.disconnected {
-  background-color: @red;
-  color: @bg0;
-}
-
-#pulseaudio {
-  background-color: transparent;
-}
-
-#pulseaudio.muted {
-  background-color: transparent;
-  color: @soft_red;
-}
-
-#custom-media {
-  background-color: @green;
-  color: @bg0;
-  /* min-width: 100px; */
-}
-
-#custom-media.custom-spotify {
-  background-color: @green;
-}
-
-#custom-media.custom-vlc {
-  background-color: @yellow;
-}
-
-#temperature {
-  background-color: @orange;
-}
-
-#temperature.critical {
-  background-color: @red;
 }
 
 #tray {
@@ -236,54 +156,4 @@ label:focus {
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
   background-color: @red;
-}
-
-#idle_inhibitor {
-  background-color: @bg1;
-}
-
-#idle_inhibitor.activated {
-  background-color: @bg3;
-  color: @bg1;
-}
-
-#mpd {
-  background-color: @green;
-  color: @bg0;
-}
-
-#mpd.disconnected {
-  background-color: @red;
-}
-
-#mpd.stopped {
-  background-color: @aqua;
-}
-
-#mpd.paused {
-  background-color: @green;
-}
-
-#language {
-  background: @aqua;
-  color: @red;
-  padding: 0 5px;
-  margin: 0 5px;
-  min-width: 16px;
-}
-
-#keyboard-state {
-  background: @green;
-  color: #000000;
-  padding: 0 0px;
-  margin: 0 5px;
-  min-width: 16px;
-}
-
-#keyboard-state > label {
-  padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-  background: rgba(0, 0, 0, 0.2);
 }

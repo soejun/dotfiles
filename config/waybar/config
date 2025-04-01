@@ -20,16 +20,16 @@
   "sway/window": {
     "icon": false,
     "icon-size": 16,
-    "format": "<span size=\"medium\" font_weight=\"600\" color=\"#ABB2BF\">{}</span>",
+    "format": "<span size=\"medium\" font_weight=\"600\">{}</span>",
     "max-length": 1000
   },
   "sway/workspaces": {
     "all-outputs": false,
     "disable-scroll": true,
-    "format": "<span size=\"medium\" font_weight=\"600\" color=\"#ABB2BF\">{name}</span>"
+    "format": "<span size=\"medium\" font_weight=\"600\">{name}</span>"
   },
   "sway/mode": {
-    "format": "<span size=\"medium\" color=\"#61AFEF\" font_weight=\"800\">{}</span>"
+    "format": "<span size=\"medium\" font_weight=\"800\">{}</span>"
   },
   "tray": {
     "icon-size": 12,
@@ -65,8 +65,8 @@
     "on-click": "pavucontrol"
   },
   "network": {
-    "format-wifi": "<span size=\"medium\" color=\"#ABB2BF\">{icon}</span>",
-    "format-ethernet": "<span size=\"medium\" color=\"#ABB2BF\"></span>",
+    "format-wifi": "<span size=\"medium\" >{icon}</span>",
+    "format-ethernet": "<span size=\"medium\" ></span>",
     "format-disconnected": "<span size=\"medium\" color=\"#E06C75\"></span>",
     "max-length": 50,
     "on-click": "kitty -e 'nmtui'",
@@ -85,8 +85,8 @@
       "critical": 20
     },
     "format": "{icon}",
-    "format-charging": "<span color=\"#98C379\"> {capacity}%</span>",
-    "format-plugged": "<span color=\"#98C379\"> {capacity}%</span>",
+    "format-charging": "<span> {capacity}%</span>",
+    "format-plugged": "<span > {capacity}%</span>",
     "format-alt": "{time} {icon}",
     "format-icons": [
       "",
