@@ -24,8 +24,8 @@
     "max-length": 1000
   },
   "sway/workspaces": {
+    "current-only": false,
     "all-outputs": false,
-    "disable-scroll": true,
     "format": "<span size=\"medium\" font_weight=\"600\">{name}</span>"
   },
   "sway/mode": {

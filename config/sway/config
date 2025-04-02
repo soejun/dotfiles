@@ -313,15 +313,14 @@ bar {
 gaps inner 6
 gaps outer 3
 
-default_border pixel 5
+default_border pixel 4
 # smart_borders isn't visually great for dual monitors where onky one app is open on both displayed workspaces
 # smart_borders on 
-
+#
+# gruvbox borders - green
 client.focused #8ec07c #8ec07c #665c54 #8ec07c
-
+# gruvbox borders - blue 
 # client.focused #83a598 #83a598 #665c54 #83a598
 
-# client.focused #458588 #458588 #665c54 #458588
- 
-
-# client.focused #61AFEF #61AFEF #5c6370 #61AFEF
+# kanagawa borders
+# client.focused #6a9589 #6a9589 #727169 #6a9589
