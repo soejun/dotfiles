@@ -210,12 +210,11 @@ alt-ctrl-k = 'resize height -50'
 alt-ctrl-l = 'resize width +50'
 alt-ctrl-b = 'balance-sizes'
 
-# ctrl-g = '''exec-and-forget osascript -e '
-# tell application "Safari"
-#     make new document at end of documents
-#     activate
-# end tell'
-# '''
+alt-enter = '''exec-and-forget osascript -e '
+    do shell script "open -na 'Kitty' --new"
+'
+'''
+
 #
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-r = 'mode resize'
@@ -251,4 +250,3 @@ run = 'move-node-to-workspace 4'
 [[on-window-detected]]
 if.app-id = 'com.valvesoftware.steam'
 run = ['layout tiling', 'move-node-to-workspace 8']
-
