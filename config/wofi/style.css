@@ -1,8 +1,8 @@
 window {
 margin: 0px;
-border: 1px solid #7A8478;
+border: 2px solid #1C1C1C;
 border-radius: .8rem;
-background-color: #121212;
+background-color: #282828;
 opacity: .9;
 }
 
@@ -10,20 +10,24 @@ opacity: .9;
 margin: 5px;
 border: none;
 border-radius: .5rem;
-color: #FFFFFF;
-background-color: #2E2E2E;
+color: #FDFCFF;
+background-color: #1C1C1C;
+}
+
+#input:focus{
+  box-shadow: 0 0 4px 2px #565858;
 }
 
 #inner-box {
 margin: 5px;
 border: none;
-background-color: #121212;
+background-color: #282828;
 }
 
 #outer-box {
 margin: 5px;
 border: none;
-background-color: #121212;
+background-color: #282828;
 }
 
 #scroll {
@@ -34,10 +38,10 @@ border: none;
 #text {
 margin: 5px;
 border: none;
-color: #FFFFFF;
+color: #FDFCFF;
 }
 
 #entry:selected {
-background-color: #2E2E2E;
+background-color: #565858;
 border-radius: .5rem;
 }

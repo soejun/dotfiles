@@ -8,7 +8,8 @@
 # output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 #
 # Using irl/Colors.png wallpaper until I can setup swayFX
-output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
+output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/woods.jpg fill
 
 ### Output configuration
 
@@ -44,8 +45,8 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
 output DP-1 resolution 3840x2160  position 0,0
 output HDMI-A-1 resolution 3840x2160 position 3840,0
 
-set $output-primary HDMI-A-1
-set $output-secondary DP-1
+set $output-primary DP-1
+set $output-secondary HDMI-A-1
 
 workspace 1 output $output-primary
 workspace 2 output $output-primary

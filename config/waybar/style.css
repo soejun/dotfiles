@@ -1,6 +1,6 @@
-@define-color bg0 #121212;        /* Background */
-@define-color bg1 #2C2C2C;        /* Tab bar active background */
-@define-color fg1 #FFFFFF;        /* Foreground (bright) */
+@define-color bg0 #1C1C1C;        /* Background */
+@define-color bg1 #282828;        /* Tab bar active background */
+@define-color fg1 #FDFCFF;        /* Foreground (bright) */
 @define-color red #E06C75;        /* Red */
 @define-color soft_red #BE5046;   /* Softer Red */
 @define-color green #98C379;      /* Green */
@@ -122,14 +122,14 @@ window#waybar.empty #window {
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @fg1;
+    color: #1C1C1C;
   }
 }
 
 #battery.critical:not(.charging) {
   background-color: @red;
-  color: #ffffff;
+  color: @fg1; 
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -138,7 +138,7 @@ window#waybar.empty #window {
 }
 
 label:focus {
-  background-color: #000000;
+  background-color: #1C1C1C;
 }
 
 #network {
