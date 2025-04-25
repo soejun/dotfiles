@@ -53,7 +53,7 @@ workspace 2 output $output-primary
 workspace 3 output $output-primary
 workspace 4 output $output-primary
 workspace 5 output $output-primary
-workspace 6 output $output-primary
+workspace 6 output $output-secondary
 workspace 7 output $output-secondary
 workspace 8 output $output-secondary
 workspace 9 output $output-secondary
@@ -79,7 +79,7 @@ exec_always {
     # autotiling, install with pipx
     "pkill -f 'autotiling?';"
     # autotiling --limit 2
-    autotiling
+    # autotiling
     ~/.config/sway/utils/clamshell.sh
 }
 
@@ -285,10 +285,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## Resizing in default mode
-bindsym $mod+ctrl+$right  resize grow width 125px
-bindsym $mod+ctrl+$left  resize shrink width 125px
-bindsym $mod+ctrl+$up  resize grow height 125px
-bindsym $mod+ctrl+$down  resize shrink height 125px
+bindsym $mod+ctrl+$right  resize grow width 100px
+bindsym $mod+ctrl+$left  resize shrink width 100px
+bindsym $mod+ctrl+$up  resize grow height 100px
+bindsym $mod+ctrl+$down  resize shrink height 100px
+
+bindsym $mod+ctrl+Right  resize grow width 100px
+bindsym $mod+ctrl+Left  resize shrink width 100px
+bindsym $mod+ctrl+Up  resize grow height 100px
+bindsym $mod+ctrl+Down  resize shrink height 100px
+
 
 mode "layout" {
   bindsym t nop set_layout tall
