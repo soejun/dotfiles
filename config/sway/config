@@ -75,11 +75,13 @@ exec_always {
 
     ## Tiling addons
     # swaymonad
-    "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+    "pkill -f 'python3? .+/swaymonad.py';"
+    # "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
+    # set_layout 3_col
     # autotiling, install with pipx
     "pkill -f 'autotiling?';"
     # autotiling --limit 2
-    # autotiling
+    autotiling
     ~/.config/sway/utils/clamshell.sh
 }
 
@@ -172,22 +174,34 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 
-bindsym alt+Shift+j nop swap_with_next_window
-bindsym alt+Shift+k nop swap_with_prev_window
+# bindsym alt+Shift+j nop swap_with_next_window
+# bindsym alt+Shift+k nop swap_with_prev_window
 # bindsym alt+Shift+$left move left
 # bindsym alt+Shift+$down move down
 # bindsym alt+Shift+$up move up
 # bindsym alt+Shift+$right move right
+#
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up  move up
+bindsym $mod+Shift+$right  move right
 
-bindsym $mod+Shift+$left nop move left
-bindsym $mod+Shift+$down nop move down
-bindsym $mod+Shift+$up nop move up
-bindsym $mod+Shift+$right nop move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up  move up
+bindsym $mod+Shift+Right  move right
 
-bindsym $mod+Shift+Left nop move left
-bindsym $mod+Shift+Down nop move down
-bindsym $mod+Shift+Up nop move up
-bindsym $mod+Shift+Right nop move right
+
+
+# bindsym $mod+Shift+$left nop move left
+# bindsym $mod+Shift+$down nop move down
+# bindsym $mod+Shift+$up nop move up
+# bindsym $mod+Shift+$right nop move right
+#
+# bindsym $mod+Shift+Left nop move left
+# bindsym $mod+Shift+Down nop move down
+# bindsym $mod+Shift+Up nop move up
+# bindsym $mod+Shift+Right nop move right
 
 
 # bindsym alt+shift+$left nop reflectx, focus left, swap container with mark swap
@@ -196,9 +210,9 @@ bindsym $mod+Shift+Right nop move right
 # bindsym alt+shift+$right mark swap, focus right, swap container with mark swap
 #
 # TODO: Add balance
-bindsym $mod+Shift+y nop reflecty
-bindsym $mod+Shift+x nop reflectx
-bindsym $mod+Shift+t nop transpose
+# bindsym $mod+Shift+y nop reflecty
+# bindsym $mod+Shift+x nop reflectx
+# bindsym $mod+Shift+t nop transpose
 
 
 # Workspaces:
@@ -273,10 +287,10 @@ mode "resize" {
     bindsym $right resize grow width 10px
 
     # resize with swaymonad
-    bindsym Left nop resize_master shrink width 10px
-    bindsym Up nop resize_master grow height 10px
-    bindsym Down nop resize_master shrink height 10px
-    bindsym Right nop resize_master grow width 10px
+    # bindsym Left nop resize_master shrink width 10px
+    # bindsym Up nop resize_master grow height 10px
+    # bindsym Down nop resize_master shrink height 10px
+    # bindsym Right nop resize_master grow width 10px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -314,7 +328,7 @@ mode "layout" {
   bindsym Escape mode "default"
 }
 
-bindsym $mod+alt+ctrl+l mode "layout"
+# bindsym $mod+alt+ctrl+l mode "layout"
 
   bindsym --locked XF86AudioMute exec 'pamixer --toggle-mute'
   bindsym --locked XF86AudioLowerVolume exec 'pamixer --decrease 5'
@@ -337,8 +351,13 @@ default_border pixel 4
 #
 # gruvbox borders - green
 client.focused #8ec07c #8ec07c #665c54 #8ec07c
+
 # gruvbox borders - blue 
 # client.focused #83a598 #83a598 #665c54 #83a598
 
 # kanagawa borders
 # client.focused #6a9589 #6a9589 #727169 #6a9589
+#
+## onedark borders
+# client.focused #979eab #979eab #393e48 #979eab
+
