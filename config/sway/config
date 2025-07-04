@@ -5,8 +5,8 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Wallpaper
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
-output * bg ~/Pictures/catppuccin/catppuccin_cat.png fill
+output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
+# output * bg ~/Pictures/catppuccin/catppuccin_cat.png fill
 
 # Using irl/Colors.png wallpaper until I can setup swayFX
 # output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
@@ -357,7 +357,7 @@ default_border pixel 4
 # smart_borders on 
 #
 # gruvbox borders - green
-# client.focused #8ec07c #8ec07c #665c54 #8ec07c
+client.focused #8ec07c #8ec07c #665c54 #8ec07c
 
 # gruvbox borders - blue 
 # client.focused #83a598 #83a598 #665c54 #83a598
@@ -369,5 +369,5 @@ default_border pixel 4
 # client.focused #979eab #979eab #393e48 #979eab
 #
 # Catppuccin-Macchiato
-client.focused #B7BDF8 #B7BDF8 #6E738D #B7BDF8 
+# client.focused #B7BDF8 #B7BDF8 #6E738D #B7BDF8 
 
