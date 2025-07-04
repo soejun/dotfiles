@@ -1,9 +1,10 @@
-@define-color bg0 #1C1C1C;        /* Background */
-@define-color bg1 #282828;        /* Tab bar active background */
-@define-color fg1 #FDFCFF;        /* Foreground (bright) */
-@define-color red #E06C75;        /* Red */
-@define-color soft_red #BE5046;   /* Softer Red */
-@define-color green #98C379;      /* Green */
+@define-color bg0 #1C1C1C; /* Background */
+@define-color bg1 #282828; /* Tab bar active background */
+@define-color fg1 #FDFCFF; /* Foreground (bright) */
+@define-color bg2 #665c54;
+@define-color red #E06C75; /* Red */
+@define-color soft_red #BE5046; /* Softer Red */
+@define-color green #98C379; /* Green */
 
 * {
   font-family: 'Maple Mono NF:style=Bold';
@@ -27,7 +28,7 @@
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.45);  
+  background-color: rgba(0, 0, 0, 0.45);
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -37,11 +38,11 @@ window#waybar.hidden {
 }
 
 window#waybar.empty {
-  background-color: rgba(0, 0, 0, 0.45);  
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
 #workspaces {
-  background-color: rgba(63, 68, 81, 0.0); 
+  background-color: rgba(63, 68, 81, 0);
 }
 
 #workspaces button {
@@ -57,7 +58,7 @@ window#waybar.empty {
 
 #workspaces button.focused {
   color: @fg1;
-  background-color: @bg1;
+  background-color: @bg2;
 }
 
 #workspaces button.urgent {
@@ -123,13 +124,13 @@ window#waybar.empty #window {
 @keyframes blink {
   to {
     background-color: @fg1;
-    color: #1C1C1C;
+    color: #1c1c1c;
   }
 }
 
 #battery.critical:not(.charging) {
   background-color: @red;
-  color: @fg1; 
+  color: @fg1;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -138,7 +139,7 @@ window#waybar.empty #window {
 }
 
 label:focus {
-  background-color: #1C1C1C;
+  background-color: #1c1c1c;
 }
 
 #network {
