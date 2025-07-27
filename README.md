@@ -7,6 +7,16 @@ My coworkers say I have a problem.
 `^M` Represents a carriage return character `\r` in ASCII.
 - On Linux only `\n` is used.
 
+On MacOS:
+
+`Last login: Fri Apr  4 12:05:32 on ttys002
+compinit:527: no such file or directory: /opt/homebrew/share/zsh/site-functions/_brew_services`
+
+```bash
+brew cleanup && rm -f $ZSH_COMPDUMP && omz reload 
+# should solve the issue.
+```
+
 ## Sway
 
 Useful Links:
