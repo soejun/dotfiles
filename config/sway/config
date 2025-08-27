@@ -5,19 +5,9 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Wallpaper
-output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
-# output * bg ~/Pictures/catppuccin/catppuccin_cat.png fill
 
-# Using irl/Colors.png wallpaper until I can setup swayFX
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/anime/wall.jpg fill
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/woods.jpg fill
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/bulbs.jpg fill
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/minimalistic/PJbX0MG.png fill
-# output * bg ~/Pictures/macos/wp10117191-macos-dark-wallpapers.jpg fill
-# output * bg ~/Pictures/swaybg/fall_nature_joey_jazz.png fill
-# output * bg ~/Pictures/swaybg/mountain_retreat_u_scaredpie.jpg fill
-# output * bg ~/Pictures/swaybg/camera-1130731.jpg fill
+output * bg ~/Pictures/swaybg/folke-dot-wall.png fill
+
 ### Output configuration
 
 ### Idle configuration
@@ -357,7 +347,9 @@ default_border pixel 4
 # smart_borders on 
 #
 # gruvbox borders - green
-client.focused #8ec07c #8ec07c #665c54 #8ec07c
+# client.focused #8ec07c #8ec07c #665c54 #8ec07c
+
+# client.focused #fbf1c7 #fbf1c7 #665c54 #fbf1c7
 
 # gruvbox borders - blue 
 # client.focused #83a598 #83a598 #665c54 #83a598
@@ -366,8 +358,11 @@ client.focused #8ec07c #8ec07c #665c54 #8ec07c
 # client.focused #6a9589 #6a9589 #727169 #6a9589
 #
 ## onedark borders
+# client.focused #D7DAE0 #D7DAE0 #393e48 #D7DAE0
 # client.focused #979eab #979eab #393e48 #979eab
 #
 # Catppuccin-Macchiato
 # client.focused #B7BDF8 #B7BDF8 #6E738D #B7BDF8 
 
+# tokyonight_night boders
+client.focused #c0caf5 #c0caf5 #283457 #c0caf5
