@@ -6,7 +6,7 @@
 
 ### Wallpaper
 
-output * bg ~/Pictures/swaybg/folke-dot-wall.png fill
+output * bg ~/Pictures/swaybg/camera-1130731.jpg fill
 
 ### Output configuration
 
@@ -349,7 +349,7 @@ default_border pixel 4
 # gruvbox borders - green
 # client.focused #8ec07c #8ec07c #665c54 #8ec07c
 
-# client.focused #fbf1c7 #fbf1c7 #665c54 #fbf1c7
+client.focused #fbf1c7 #fbf1c7 #665c54 #fbf1c7
 
 # gruvbox borders - blue 
 # client.focused #83a598 #83a598 #665c54 #83a598
@@ -365,4 +365,4 @@ default_border pixel 4
 # client.focused #B7BDF8 #B7BDF8 #6E738D #B7BDF8 
 
 # tokyonight_night boders
-client.focused #c0caf5 #c0caf5 #283457 #c0caf5
+# client.focused #c0caf5 #c0caf5 #283457 #c0caf5
