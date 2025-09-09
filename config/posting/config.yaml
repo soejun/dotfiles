@@ -1,0 +1,6 @@
+theme: gruvbox
+response:
+  prettify_json: true
+heading:
+  visible: true
+  show_host: true
