@@ -6,7 +6,8 @@
 
 ### Wallpaper
 
-output * bg ~/Pictures/macos/wp10117191-macos-dark-wallpapers.jpg fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
+output * bg ~/Pictures/Walls_old/Trees-22.jpg fill
 
 ### Output configuration
 
@@ -65,6 +66,7 @@ exec_always {
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
     gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
+    swaync
     pulseaudio --start
 
     # Fix for bug between Sway and Wayland
@@ -338,6 +340,10 @@ bindsym --locked XF86MonBrightnessUp exec 'light -A 5.00'
 bindsym alt+f10 exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
 bindsym alt+F11 exec 'pactl set-sink-volume @DEFAULT_SINK@ -10%'
 bindsym alt+F12 exec 'pactl set-sink-volume @DEFAULT_SINK@ +10%'
+
+## sway-notification-center
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 bar {
 	swaybar_command waybar

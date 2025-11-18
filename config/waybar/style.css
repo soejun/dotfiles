@@ -158,3 +158,9 @@ label:focus {
   -gtk-icon-effect: highlight;
   background-color: @red;
 }
+
+#custom-notification{
+  padding: 0px 4px 0px 0px;
+  font-size: 16px;
+  margin-right: 8px;
+}

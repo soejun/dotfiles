@@ -4,7 +4,7 @@ dotfiles="${HOME}/Workspace/dotfiles"
 
 apps=("kitty" "ranger" "tmux" "zathura" "posting")
 
-sway_wm=("sway" "swaylock" "waybar" "wofi")
+sway_wm=("sway" "swaylock" "waybar" "wofi" "swaync")
 
 configurations=("${apps[@]}" "${sway_wm[@]}")
 
