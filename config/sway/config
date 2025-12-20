@@ -40,8 +40,8 @@ output * bg ~/Pictures/Walls_old/Trees-22.jpg fill
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
 ## primary display (landscape)
 ## secondary display (portrait)
-output DP-1 resolution 3840x2160  position 0,0
-output HDMI-A-1 resolution 3840x2160 position 3840,0
+output DP-1 resolution 3840x2160  position 2160,1200
+output HDMI-A-1 resolution 3840x2160 position 0,0 transform 270
 
 set $output-primary DP-1
 set $output-secondary HDMI-A-1
@@ -51,7 +51,8 @@ workspace 2 output $output-primary
 workspace 3 output $output-primary
 workspace 4 output $output-primary
 workspace 5 output $output-primary
-workspace 6 output $output-secondary
+workspace 6 output $output-primary
+# workspace 6 output $output-secondary
 workspace 7 output $output-secondary
 workspace 8 output $output-secondary
 workspace 9 output $output-secondary
@@ -81,6 +82,7 @@ exec_always {
     # autotiling, install with pipx
     "pkill -f 'autotiling?';"
     # autotiling --limit 2
+    # --no-startup-id workstyle &> /tmp/workstyle.log
     autotiling
     ~/.config/sway/utils/clamshell.sh
 }
@@ -169,10 +171,10 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 
 # bindsym alt+Shift+j nop swap_with_next_window
