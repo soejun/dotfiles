@@ -122,34 +122,36 @@ source $ZSH/oh-my-zsh.sh
 unsetopt BEEP
 
 eval "$(register-python-argcomplete pipx)"
-alias python='python3'
-# do this because even if pyenv virtualenv is activated pip defaults to systemwide
-# pyenv exec pip install -r requirements.txt
 
-# https://github.com/paololazzari/play
-# Running play in docker for read only mode
-alias play-docker='docker run -e "TERM=xterm-256color" --rm -it -v "$(pwd)":$(pwd) -w "$(pwd)" plazzari/play:latest'
-
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export MANPAGER="nvim +Man!"
-export EDITOR=nvim
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin/"
+
+export PATH="$PATH:/opt/helix-25.01.1-x86_64-linux/hx"
 
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/opt/jdk-17.0.8.1+1/bin
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
 
-export PATH="$PATH:$HOME/.local/share/nvim/mason/bin/"
 export PATH="$PATH:/snap/bin"
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export EDITOR=nvim
+alias play-docker='docker run -e "TERM=xterm-256color" --rm -it -v "$(pwd)":$(pwd) -w "$(pwd)" plazzari/play:latest'
+alias leetcode='nvim leetcode.nvim'
+alias make-gif='~/Workspace/ToolBoxUtils/gifs/record-gif.sh'
+alias lsplog='tail -f ~/.local/state/nvim/lsp.log'
+alias git-branch-name='git rev-parse --abbrev-ref HEAD'
+
+
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/go/bin"
+export UV_NATIVE_TLS=true
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# nvm alias default node > /dev/null 2>&1
 . "$HOME/.cargo/env"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -185,39 +187,5 @@ function precmd() {
 # Call the function to set the initial title when the shell starts
 set_terminal_title
 
-
-# function fzf_cd() {
-#   cd $(find . \( \
-#     -path "./.git" -o \
-#     -path "./.dotnet" -o \
-#     -path "./debug" -o \
-#     -path "./bin" -o \
-#     -path "./obj" -o \
-#     -path "./.idea" -o \
-#     -path "./.fleet" -o \
-#     -path "./node_modules" -o \
-#     -path "./volumes" -o \
-#     -path "./.terraform" -o \
-#     -path "./Library" -o \
-#     -path "./Pictures" -o \
-#     -path "./Documents" -o \
-#     -path "./.local" -o \
-#     -path "./.nuget" -o \
-#     -path "./.npm" -o \
-#     -path "./go" -o \
-#     -path "./.oh-my-zsh" -o \
-#     -path "./.oh-my-bash" -o \
-#     -path "./.cache" -o \
-#     -path "./.vscode" -o \
-#     -path "./.rustup" -o \
-#     -path "./.cargo" -o \
-#     -path "./.quokka" -o \
-#     -path "./.vscode-insiders" -o \
-#     -path "./.*" ! -path "./.config" \
-#   \) -prune -o -type d -print | fzf)
-# }
-#
-# zle -N fzf_cd
-# bindkey '^F' fzf_cd
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
