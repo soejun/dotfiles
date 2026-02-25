@@ -6,8 +6,7 @@
 
 ### Wallpaper
 
-# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/Colors.png fill
-output * bg ~/Pictures/Walls_old/Trees-22.jpg fill
+output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 
 ### Output configuration
 
@@ -51,8 +50,7 @@ workspace 2 output $output-primary
 workspace 3 output $output-primary
 workspace 4 output $output-primary
 workspace 5 output $output-primary
-workspace 6 output $output-primary
-# workspace 6 output $output-secondary
+workspace 6 output $output-secondary
 workspace 7 output $output-secondary
 workspace 8 output $output-secondary
 workspace 9 output $output-secondary
@@ -75,16 +73,13 @@ exec_always {
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
     ## Tiling addons
-    # swaymonad
-    "pkill -f 'python3? .+/swaymonad.py';"
-    # "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/addons/swaymonad/swaymonad.py"
-    # set_layout 3_col
     # autotiling, install with pipx
-    "pkill -f 'autotiling?';"
-    # autotiling --limit 2
-    # --no-startup-id workstyle &> /tmp/workstyle.log
+    #
+    pkill -f 'autotiling?';
     autotiling
-    ~/.config/sway/utils/clamshell.sh
+
+    # Laptop config
+    # ~/.config/sway/utils/clamshell.sh
 }
 # exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 
@@ -116,7 +111,6 @@ input "1133:45088:MX_Vertical_Mouse" {
 
 # Disable the middle mouse button action to prevent it from being overridden.
 exec --no-startup-id xinput set-button-map "2867:4181:Contour_Design_UNIMOUSE" 1 0 3
-exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500
 
 mouse_warping container
 focus_wrapping no
@@ -163,96 +157,28 @@ bindsym Scroll_Lock exec ~/.config/sway/utils/lock.sh
 
 ## Moving Around:
 
-# bindsym alt+$down nop focus_next_window
-# bindsym alt+$up nop focus_prev_window
-
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
 
-
-# bindsym alt+Shift+j nop swap_with_next_window
-# bindsym alt+Shift+k nop swap_with_prev_window
-# bindsym alt+Shift+$left move left
-# bindsym alt+Shift+$down move down
-# bindsym alt+Shift+$up move up
-# bindsym alt+Shift+$right move right
-#
 bindsym $mod+Shift+$left  move left
 bindsym $mod+Shift+$down  move down
 bindsym $mod+Shift+$up  move up
 bindsym $mod+Shift+$right  move right
 
-bindsym $mod+Shift+Left  move left
-bindsym $mod+Shift+Down  move down
-bindsym $mod+Shift+Up  move up
-bindsym $mod+Shift+Right  move right
-
-
-
-# bindsym $mod+Shift+$left nop move left
-# bindsym $mod+Shift+$down nop move down
-# bindsym $mod+Shift+$up nop move up
-# bindsym $mod+Shift+$right nop move right
-#
-# bindsym $mod+Shift+Left nop move left
-# bindsym $mod+Shift+Down nop move down
-# bindsym $mod+Shift+Up nop move up
-# bindsym $mod+Shift+Right nop move right
-
-
-# bindsym alt+shift+$left nop reflectx, focus left, swap container with mark swap
-# bindsym alt+shift+$down mark swap, focus down, swap container with mark swap
-# bindsym alt+shift+$up mark swap, focus up, swap container with mark swap
-# bindsym alt+shift+$right mark swap, focus right, swap container with mark swap
-#
-# TODO: Add balance
-# bindsym $mod+Shift+y nop reflecty
-# bindsym $mod+Shift+x nop reflectx
-# bindsym $mod+Shift+t nop transpose
-
-
 # Workspaces:
-# bindsym $mod+1 workspace number 1
-# bindsym $mod+2 workspace number 2
-# bindsym $mod+3 workspace number 3
-# bindsym $mod+4 workspace number 4
-# bindsym $mod+5 workspace number 5
-# bindsym $mod+6 workspace number 6
-# bindsym $mod+7 workspace number 7
-# bindsym $mod+8 workspace number 8
-# bindsym $mod+9 workspace number 9
-# bindsym $mod+0 workspace number 10
-#
-## sov
-
-bindsym --no-repeat $mod+1 workspace number 1; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+2 workspace number 2; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+3 workspace number 3; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+4 workspace number 4; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+5 workspace number 5; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+6 workspace number 6; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+7 workspace number 7; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+8 workspace number 8; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+9 workspace number 9; exec "echo 1 > /tmp/sovpipe"
-bindsym --no-repeat $mod+0 workspace number 10; exec "echo 1 > /tmp/sovpipe"
-
-bindsym --release $mod+1 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+2 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+3 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+4 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+5 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+6 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+7 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+8 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+9 exec "echo 0 > /tmp/sovpipe"
-bindsym --release $mod+0 exec "echo 0 > /tmp/sovpipe"
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
@@ -313,12 +239,6 @@ mode "resize" {
     bindsym $down resize shrink height 10px
     bindsym $right resize grow width 10px
 
-    # resize with swaymonad
-    # bindsym Left nop resize_master shrink width 10px
-    # bindsym Up nop resize_master grow height 10px
-    # bindsym Down nop resize_master shrink height 10px
-    # bindsym Right nop resize_master grow width 10px
-
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -336,27 +256,6 @@ bindsym $mod+ctrl+Left  resize shrink width 100px
 bindsym $mod+ctrl+Up  resize grow height 100px
 bindsym $mod+ctrl+Down  resize shrink height 100px
 
-
-mode "layout" {
-  bindsym t nop set_layout tall
-
-  ### NCol
-  # Maintains n columns, with one column being the master column.
-  # When n=2, this is equivalent to Xmonad's Tall layout.
-  # When n=3, this is equivalent to Xmonad's ThreeColumn layout.
-  # Higher ns are supported, but don't currently have bindings.
-  bindsym 3 nop set_layout 3_col
-
-  ### Nop
-  # Disables auto-tiling for the workspace, allowing managing containers in normal Sway fashion.
-  bindsym n nop set_layout nop
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-# bindsym $mod+alt+ctrl+l mode "layout"
-
 bindsym --locked XF86AudioMute exec 'pamixer --toggle-mute'
 bindsym --locked XF86AudioLowerVolume exec 'pamixer --decrease 5'
 bindsym --locked XF86AudioRaiseVolume exec 'pamixer --increase 5'
@@ -365,11 +264,13 @@ bindsym --locked XF86AudioMicMute exec 'pamixer --default-source --toggle-mute'
 bindsym --locked XF86MonBrightnessDown exec 'light -U 5.00'
 bindsym --locked XF86MonBrightnessUp exec 'light -A 5.00'
 
-bindsym alt+f10 exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
-bindsym alt+F11 exec 'pactl set-sink-volume @DEFAULT_SINK@ -10%'
-bindsym alt+F12 exec 'pactl set-sink-volume @DEFAULT_SINK@ +10%'
+# for work computer becaause virtualbox windows shenanigans with visualstudio
+bindsym menu+f10 exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+bindsym menu+F11 exec 'pactl set-sink-volume @DEFAULT_SINK@ -10%'
+bindsym menu+F12 exec 'pactl set-sink-volume @DEFAULT_SINK@ +10%'
 
 ## sway-notification-center
+
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
@@ -381,26 +282,6 @@ gaps inner 6
 gaps outer 3
 
 default_border pixel 5
-# smart_borders isn't visually great for dual monitors where onky one app is open on both displayed workspaces
-# smart_borders on 
-#
+
 # gruvbox borders - green
 client.focused #8ec07c #8ec07c #665c54 #8ec07c
-
-# client.focused #fbf1c7 #fbf1c7 #665c54 #fbf1c7
-
-# gruvbox borders - blue 
-# client.focused #83a598 #83a598 #665c54 #83a598
-
-# kanagawa borders
-# client.focused #6a9589 #6a9589 #727169 #6a9589
-#
-## onedark borders
-# client.focused #D7DAE0 #D7DAE0 #393e48 #D7DAE0
-# client.focused #979eab #979eab #393e48 #979eab
-#
-# Catppuccin-Macchiato
-# client.focused #B7BDF8 #B7BDF8 #6E738D #B7BDF8 
-
-# tokyonight_night boders
-# client.focused #c0caf5 #c0caf5 #283457 #c0caf5
