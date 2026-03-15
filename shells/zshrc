@@ -1,3 +1,4 @@
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -143,6 +144,10 @@ alias lsplog='tail -f ~/.local/state/nvim/lsp.log'
 alias git-branch-name='git rev-parse --abbrev-ref HEAD'
 
 
+# fzf-nav
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
+
+
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$HOME/go/bin"
@@ -189,3 +194,5 @@ set_terminal_title
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
