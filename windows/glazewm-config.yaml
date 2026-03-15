@@ -1,0 +1,224 @@
+# GlazeWM config — mirrors sway/i3 keybindings from your Linux dotfiles
+#
+# Modifier: Super/Win key (LWin)
+# Movement: h/j/k/l (vim-style, same as sway config)
+# Deploy to: %USERPROFILE%\.glaze-wm\config.yaml
+#
+# GlazeWM docs: https://github.com/glzr-io/glazewm
+
+general:
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: true
+  cursor_jump:
+    enabled: true
+    trigger: monitor_focus
+
+gaps:
+  scale_with_dpi: true
+  inner_gap: "6px"
+  outer_gap:
+    top: "42px"    # leave room for the bar
+    bottom: "4px"
+    left: "4px"
+    right: "4px"
+
+focus_borders:
+  active:
+    enabled: true
+    color: "#89b4fa"   # catppuccin blue
+  inactive:
+    enabled: false
+    color: "#313244"
+
+# ─── Bar ────────────────────────────────────────────────────────────────────
+bar:
+  enabled: true
+  position: top
+  height: "36px"
+  opacity: 1.0
+  background: "#1e1e2e"   # catppuccin base
+  foreground: "#cdd6f4"   # catppuccin text
+  font_family: "CaskaydiaCove Nerd Font Mono"
+  font_size: "13px"
+  padding: "4px 8px"
+  offset_x: "0"
+  offset_y: "0"
+  border_radius: "0"
+
+  components_left:
+    - type: workspaces
+      label_workspace_style: " {name} "
+      focused_workspace_background: "#313244"
+      focused_workspace_foreground: "#cdd6f4"
+      displayed_workspace_background: "#45475a"
+      default_workspace_background: "transparent"
+      default_workspace_foreground: "#6c7086"
+
+  components_center:
+    - type: window_title
+      foreground: "#cdd6f4"
+
+  components_right:
+    - type: tiling_direction
+      label_horizontal: "  "
+      label_vertical: "  "
+      foreground: "#a6e3a1"
+      padding: "0 8px"
+    - type: binding_mode
+      foreground: "#f38ba8"
+      padding: "0 8px"
+    - type: clock
+      time_formatting: "HH:mm  ddd d MMM"
+      foreground: "#b4befe"
+      padding: "0 8px"
+
+# ─── Workspaces ─────────────────────────────────────────────────────────────
+workspaces:
+  - name: "1"
+  - name: "2"
+  - name: "3"
+  - name: "4"
+  - name: "5"
+  - name: "6"
+  - name: "7"
+  - name: "8"
+  - name: "9"
+
+# ─── Window Rules ────────────────────────────────────────────────────────────
+window_rules:
+  # System overlays — keep floating
+  - commands: ["set-floating"]
+    match:
+      - window_process: { regex: "Taskmgr|ScreenClippingHost|SnippingTool|FlowLauncher|PowerToys" }
+  # Picture-in-picture
+  - commands: ["set-floating"]
+    match:
+      - window_title: { regex: "(?i)picture.in.picture" }
+  # Steam popups
+  - commands: ["set-floating"]
+    match:
+      - window_process: { equals: "steam" }
+        window_title: { not_regex: "^Steam$" }
+
+# ─── Keybindings ─────────────────────────────────────────────────────────────
+# Mirrors your sway config:
+#   set $mod Mod4   →  LWin
+#   set $left h / $down j / $up k / $right l
+keybindings:
+  # --- Terminal & Launcher ---
+  - bindings: ["LWin+Return"]
+    commands: ["shell-exec wt"]           # Windows Terminal
+
+  - bindings: ["LWin+Space"]
+    commands: ["shell-exec explorer ms-settings:"]  # replace with PowerToys Run or Flow.Launcher
+
+  # --- Window management ---
+  - bindings: ["LWin+Q"]
+    commands: ["close"]
+
+  - bindings: ["LWin+Shift+Q"]
+    commands: ["quit-process"]
+
+  # --- Reload / Exit (mirrors $mod+Shift+c / $mod+Shift+e) ---
+  - bindings: ["LWin+Shift+C"]
+    commands: ["reload-config"]
+
+  - bindings: ["LWin+Shift+E"]
+    commands: ["wm-exit"]
+
+  # --- Focus (vim-style, mirrors $mod+h/j/k/l) ---
+  - bindings: ["LWin+H"]
+    commands: ["focus --direction left"]
+
+  - bindings: ["LWin+J"]
+    commands: ["focus --direction down"]
+
+  - bindings: ["LWin+K"]
+    commands: ["focus --direction up"]
+
+  - bindings: ["LWin+L"]
+    commands: ["focus --direction right"]
+
+  # --- Move windows (mirrors $mod+Shift+h/j/k/l) ---
+  - bindings: ["LWin+Shift+H"]
+    commands: ["move --direction left"]
+
+  - bindings: ["LWin+Shift+J"]
+    commands: ["move --direction down"]
+
+  - bindings: ["LWin+Shift+K"]
+    commands: ["move --direction up"]
+
+  - bindings: ["LWin+Shift+L"]
+    commands: ["move --direction right"]
+
+  # --- Resize (mirrors $mod+Alt+hjkl) ---
+  - bindings: ["LWin+Alt+H"]
+    commands: ["resize --width -3%"]
+
+  - bindings: ["LWin+Alt+J"]
+    commands: ["resize --height 3%"]
+
+  - bindings: ["LWin+Alt+K"]
+    commands: ["resize --height -3%"]
+
+  - bindings: ["LWin+Alt+L"]
+    commands: ["resize --width 3%"]
+
+  # --- Layout (mirrors $mod+v for split direction toggle) ---
+  - bindings: ["LWin+V"]
+    commands: ["toggle-tiling-direction"]
+
+  # --- Fullscreen (mirrors $mod+f in sway) ---
+  - bindings: ["LWin+F"]
+    commands: ["toggle-fullscreen"]
+
+  # --- Float toggle (mirrors $mod+Shift+Space) ---
+  - bindings: ["LWin+Shift+Space"]
+    commands: ["toggle-floating --centered"]
+
+  # --- Workspaces 1–9 (mirrors $mod+1..9) ---
+  - bindings: ["LWin+1"]
+    commands: ["focus --workspace 1"]
+  - bindings: ["LWin+2"]
+    commands: ["focus --workspace 2"]
+  - bindings: ["LWin+3"]
+    commands: ["focus --workspace 3"]
+  - bindings: ["LWin+4"]
+    commands: ["focus --workspace 4"]
+  - bindings: ["LWin+5"]
+    commands: ["focus --workspace 5"]
+  - bindings: ["LWin+6"]
+    commands: ["focus --workspace 6"]
+  - bindings: ["LWin+7"]
+    commands: ["focus --workspace 7"]
+  - bindings: ["LWin+8"]
+    commands: ["focus --workspace 8"]
+  - bindings: ["LWin+9"]
+    commands: ["focus --workspace 9"]
+
+  # --- Move to workspace (mirrors $mod+Shift+1..9) ---
+  - bindings: ["LWin+Shift+1"]
+    commands: ["move --workspace 1 --follow"]
+  - bindings: ["LWin+Shift+2"]
+    commands: ["move --workspace 2 --follow"]
+  - bindings: ["LWin+Shift+3"]
+    commands: ["move --workspace 3 --follow"]
+  - bindings: ["LWin+Shift+4"]
+    commands: ["move --workspace 4 --follow"]
+  - bindings: ["LWin+Shift+5"]
+    commands: ["move --workspace 5 --follow"]
+  - bindings: ["LWin+Shift+6"]
+    commands: ["move --workspace 6 --follow"]
+  - bindings: ["LWin+Shift+7"]
+    commands: ["move --workspace 7 --follow"]
+  - bindings: ["LWin+Shift+8"]
+    commands: ["move --workspace 8 --follow"]
+  - bindings: ["LWin+Shift+9"]
+    commands: ["move --workspace 9 --follow"]
+
+  # --- Scroll workspaces ---
+  - bindings: ["LWin+Tab"]
+    commands: ["focus --next-workspace"]
+  - bindings: ["LWin+Shift+Tab"]
+    commands: ["focus --prev-workspace"]
