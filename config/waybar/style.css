@@ -42,12 +42,12 @@ window#waybar.empty {
 }
 
 #workspaces {
-  background-color: rgba(63, 68, 81, 0);
+  background-color: transparent;
+  margin-right: 4px;
 }
 
 #workspaces button {
-  padding: 1px;
-  margin: 0px 4px 0px 4px;
+  /* margin: 0px 4px 0px 4px; */
   background-color: transparent;
   color: @fg1;
 }
@@ -66,10 +66,6 @@ window#waybar.empty {
   border-bottom: 2px solid @red;
 }
 
-#mode {
-  background-color: transparent;
-}
-
 #clock,
 #battery,
 #cpu,
@@ -79,46 +75,20 @@ window#waybar.empty {
 #backlight,
 #network,
 #pulseaudio,
-#custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
-#mpd {
-  padding-left: 4px;
-  padding-right: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+#mpd,
+#window,
+#custom-notification {
+  margin: 0px 4px 0px 4px;
+  background-color: transparent;
   color: @fg1;
-}
-
-#window {
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  background-color: transparent;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
-}
-
-#clock {
-  /* padding-top: 1px; */
-  background-color: transparent;
-}
-
-#battery {
-  background-color: rgba(0, 0, 0, 0);
-  /* padding-top: 2px; */
 }
 
 #battery.charging,
 #battery.plugged {
   color: @green;
-  background-color: transparent;
 }
 
 @keyframes blink {
@@ -138,12 +108,13 @@ window#waybar.empty #window {
   animation-direction: alternate;
 }
 
-label:focus {
-  background-color: #1c1c1c;
+#network {
+  margin-right: 16px;
+  font-size: 16px;
 }
 
-#network {
-  background-color: transparent;
+label:focus {
+  background-color: #1c1c1c;
 }
 
 #tray {
@@ -159,8 +130,7 @@ label:focus {
   background-color: @red;
 }
 
-#custom-notification{
-  padding: 0px 4px 0px 0px;
+#custom-notification {
   font-size: 16px;
-  margin-right: 8px;
+  margin-right: 12px;
 }
