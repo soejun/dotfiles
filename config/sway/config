@@ -32,7 +32,10 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/pixelart/image16.png fill
 # output DP-1 mode 3840x2160@60.00hz 
 # bindswitch --reload --locked lid:on output $laptop disable
 # bindswitch --reload --locked lid:off output $laptop enable
-
+#
+#
+# CLIPBOARD 
+# wl-copy --type text/plain < FILE.TXT
 
 ### Landscape Portrait Layout
 
