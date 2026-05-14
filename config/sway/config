@@ -60,24 +60,28 @@ workspace 10 output $output-secondary
 
 ### Essentials (Always Execute)
 
+# Single source of truth for session environment.
+# Must run before anything that depends on dbus-activated services
+# (portals, notification daemons, etc).
+exec_always dbus-update-activation-environment --systemd \
+    DISPLAY WAYLAND_DISPLAY SWAYSOCK \
+    XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
+
 set $schema "org.gnome.desktop.interface"
 exec_always {
-    gsettings set $schema gtk-theme Adwaita-dark 
+    gsettings set $schema gtk-theme Adwaita-dark
     gsettings set $schema icon-theme Adwaita
     gsettings set $schema cursor-theme Yaru
     gsettings set $schema gtk-application-prefer-dark-theme true
     gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
+
     # sway-notification-center
     swaync
-    pulseaudio --start
+
     # workstyle &> /tmp/workstyle.log
-    # Fix for bug between Sway and Wayland
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
     ## Tiling addons
-    # autotiling, install with pipx
-    #
-    pkill -f 'autotiling?';
+    pkill -f 'autotiling?'
     autotiling
 
     # Laptop config
