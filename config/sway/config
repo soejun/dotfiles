@@ -41,8 +41,8 @@ output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/stairs.jpg fill
 ## Monitor-1 Landscape and Monitor 2 Portrait (Right)
 ## primary display (landscape)
 ## secondary display (portrait)
-output DP-1 resolution 3840x2160  position 2160,1200
-output HDMI-A-1 resolution 3840x2160 position 0,0 transform 270
+output DP-1 resolution 3840x2160  position 0,1200
+output HDMI-A-1 resolution 3840x2160 position 3840,0 transform 90
 
 set $output-primary DP-1
 set $output-secondary HDMI-A-1
