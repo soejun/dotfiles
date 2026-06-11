@@ -4,10 +4,43 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+### Colorscheme (Tokyo Night Storm)
+#
+# Ported from an i3 colorscheme. i3's `set_from_resource` reads colors from
+# Xresources, which sway/Wayland does not use, so the Xresource fallback values
+# are inlined here as literals. Palette matches
+# config/kitty/themes/tokyonight/tokyonight_storm.conf.
+
+set $color0      #1d202f
+set $color1      #f7768e
+set $color2      #9ece6a
+set $color3      #e0af68
+set $color4      #7aa2f7
+set $color5      #bb9af7
+set $color6      #7dcfff
+set $color7      #a9b1d6
+set $color8      #414868
+set $color9      #ff899d
+set $color10     #9fe044
+set $color11     #faba4a
+set $color12     #8db0ff
+set $color13     #c7a9ff
+set $color14     #a4daff
+set $color15     #c0caf5
+set $foreground  #c0caf5
+set $background  #24283b
+set $cursorColor #c0caf5
+
 ### Wallpaper
 
 # output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/rails.jpg fill
-output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/stairs.jpg fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/irl/stairs.jpg fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/photography/jonas-denil-_PKzBUfuhgg.jpg fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/photography/beach.png fill
+# output * bg ~/Pictures/gruvbox-wallpapers/wallpapers/minimalistic/atoms.png fill
+# output * bg ~/Pictures/tokyonight-wallpapers/sushi_colors_upscayl_realesrgan-x4plus_x3.jpg fill
+# output * bg ~/Pictures/tokyonight-wallpapers/GLaDOS_original.jpeg fill
+output * bg ~/Pictures/tokyonight-wallpapers/tv_upscayl_realesrgan-x4plus_x2.png fill
 
 
 ### Output configuration
@@ -282,12 +315,40 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 
 bar {
 	swaybar_command waybar
+
+	# The Tokyo Night Storm palette below is for sway's built-in swaybar only.
+	# This bar launches waybar (above), so sway ignores these colors — style
+	# waybar through its own CSS (config/waybar/). Kept commented for reference
+	# and in case you ever switch back to swaybar.
+	# colors {
+	#   background         $background
+	#   statusline         $color8
+	#   separator          $color8
+	#   focused_workspace  $color6 $color6 $color0
+	#   active_workspace   $color8 $color8 $color0
+	#   inactive_workspace $color0 $color0 $color8
+	#   urgent_workspace   $color3 $color3 $color0
+	#   binding_mode       $color5 $color5 $color0
+	# }
 }
 
-gaps inner 6
-gaps outer 3
+gaps inner 8
+gaps outer 4
 
-default_border pixel 5
+default_border pixel 4
 
-# gruvbox borders - green
-client.focused #8ec07c #8ec07c #665c54 #8ec07c
+# gruvbox borders - green (disabled — replaced by Tokyo Night Storm below)
+# client.focused #8ec07c #8ec07c #665c54 #8ec07c
+# client.focused #82aaff #82aaff #665c54 #82aaff
+
+# Tokyo Night Storm window borders ($color4 matches the theme's
+# active_border_color)
+# class, border, bg, text, indicator, child border
+client.focused           $color4 $color4 $color0 $color4 $color4
+client.focused_inactive  $color8 $color8 $color15 $color8 $color8
+client.unfocused         $color8 $color0 $color8 $color8 $color8
+client.focused_tab_title $color4 $color0 $color4
+client.urgent            $color1 $color0 $color1 $color8 $color8
+client.placeholder       $color4 $color0 $color4 $color4 $color8
+#
+# client.background $color4
