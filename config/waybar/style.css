@@ -1,34 +1,29 @@
-@define-color bg0 #1C1C1C; /* Background */
-@define-color bg1 #282828; /* Tab bar active background */
-@define-color fg1 #FDFCFF; /* Foreground (bright) */
-@define-color bg2 #665c54;
-@define-color red #E06C75; /* Red */
-@define-color soft_red #BE5046; /* Softer Red */
-@define-color green #98C379; /* Green */
+/* Tokyo Night Storm — palette matches
+ * config/kitty/themes/tokyonight/tokyonight_storm.conf */
+@define-color bg      #1f2335; /* bar background (storm bg_dark) */
+@define-color surface #292e42; /* module pills (storm bg_highlight) */
+@define-color fg      #c0caf5;
+@define-color fg_dark #1d202f;
+@define-color blue    #7aa2f7;
+@define-color blue0   #3d59a1;
+@define-color green   #9ece6a;
+@define-color yellow  #e0af68;
+@define-color magenta #bb9af7;
+@define-color red     #f7768e;
+@define-color comment #565f89;
 
 * {
-  font-family: 'Maple Mono NF:style=Bold';
+  font-family: "Maple Mono NF";
+  font-weight: bold;
   font-size: 14px;
   min-height: 0;
   border-radius: 0;
   border: none;
 }
 
-.modules-left {
-  background-color: rgba(40, 40, 40, 0);
-  margin-left: 8px;
-}
-
-.modules-right {
-  background-color: rgba(40, 40, 40, 0);
-}
-
-.modules-center {
-  background-color: rgba(40, 40, 40, 0);
-}
-
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: @bg;
+  color: @fg;
   transition-property: background-color;
   transition-duration: 0.25s;
 }
@@ -37,53 +32,107 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
-window#waybar.empty {
-  background-color: rgba(0, 0, 0, 0.45);
+.modules-left {
+  margin-left: 4px;
+}
+
+.modules-right {
+  margin-right: 4px;
+}
+
+/* Module pills */
+#scratchpad,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#temperature,
+#cpu,
+#memory,
+#network,
+#mode,
+#custom-notification,
+#tray {
+  background-color: @surface;
+  color: @fg;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 4px 3px;
+}
+
+/* Hide the window-title pill when the workspace is empty */
+window#waybar.empty #window {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 #workspaces {
   background-color: transparent;
-  margin-right: 4px;
 }
 
 #workspaces button {
-  /* margin: 0px 4px 0px 4px; */
-  background-color: transparent;
-  color: @fg1;
+  background-color: @surface;
+  color: @fg;
+  border-radius: 8px;
+  padding: 0 7px;
+  margin: 4px 3px;
 }
 
 #workspaces button:hover {
-  background: @bg1;
+  background: @blue0;
+  color: @fg;
+}
+
+/* Workspace shown on its output, but focus is on another monitor */
+#workspaces button.visible {
+  background-color: @blue0;
+  color: @fg;
 }
 
 #workspaces button.focused {
-  color: @fg1;
-  background-color: @bg2;
+  background-color: @blue0;
+  color: @fg;
+  border: 1px solid @blue;
+  padding: 0 6px;
 }
 
 #workspaces button.urgent {
-  color: @red;
-  border-bottom: 2px solid @red;
+  background-color: @red;
+  color: @fg_dark;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#tray,
-#mode,
-#idle_inhibitor,
-#mpd,
-#window,
-#custom-notification {
-  margin: 0px 4px 0px 4px;
-  background-color: transparent;
-  color: @fg1;
+#mode {
+  background-color: @red;
+  color: @fg_dark;
+}
+
+#pulseaudio {
+  color: @blue;
+}
+
+#pulseaudio.muted {
+  color: @comment;
+}
+
+#temperature {
+  color: @yellow;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+#cpu {
+  color: @magenta;
+}
+
+#memory {
+  color: @green;
+}
+
+#network {
+  color: @red;
 }
 
 #battery.charging,
@@ -91,16 +140,19 @@ window#waybar.empty {
   color: @green;
 }
 
+#battery.warning:not(.charging) {
+  color: @yellow;
+}
+
 @keyframes blink {
   to {
-    background-color: @fg1;
-    color: #1c1c1c;
+    background-color: @red;
+    color: @fg_dark;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: @red;
-  color: @fg1;
+  color: @red;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -108,17 +160,8 @@ window#waybar.empty {
   animation-direction: alternate;
 }
 
-#network {
-  margin-right: 16px;
+#custom-notification {
   font-size: 16px;
-}
-
-label:focus {
-  background-color: #1c1c1c;
-}
-
-#tray {
-  background-color: @bg0;
 }
 
 #tray > .passive {
@@ -128,9 +171,4 @@ label:focus {
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
   background-color: @red;
-}
-
-#custom-notification {
-  font-size: 16px;
-  margin-right: 12px;
 }

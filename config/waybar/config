@@ -1,29 +1,26 @@
 {
   "layer": "top",
-  "position": "bottom",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
   "modules-left": [
-    "sway/window",
-          ],
-  "modules-center": [
     "sway/mode",
     "sway/workspaces",
-
-      ],
+    "sway/scratchpad",
+    "sway/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
     "battery",
-    "network",
     "pulseaudio",
+    "temperature",
     "cpu",
     "memory",
-    "clock",
-    "custom/notification",
-
+    "network",
+    "custom/notification"
   ],
-  "height": 24,
-  "sway/window": {
-    "icon": false,
-    "max-length": 1000
-  },
   "sway/workspaces": {
     "current-only": false,
     "all-outputs": false,
@@ -32,55 +29,93 @@
   "sway/mode": {
     "format": "{}"
   },
-  "tray": {
-    "spacing": 10
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": [
+      "",
+      ""
+    ],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
   },
-  "cpu": {
-    "interval": 1,
-    "format": "CPU: {usage}%",
-    "max-length": 10
+  "sway/window": {
+    "icon": true,
+    "icon-size": 18,
+    "format": "{title}",
+    "max-length": 60
   },
-  "memory": {
-    "interval": 1,
-    "format": "MEM: {percentage}%",
-    "max-length": 15
+  "clock": {
+    "format": "{:%a %d %b %Y • %I:%M %p}"
   },
-  "pulseaudio": {
-    "scroll-step": 1,
-    "format": "VOL: {volume}%",
-    "on-click": "pavucontrol"
-  },
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "({signalStrength}%) ",
-    "format-ethernet": "󰊗",
-    "format-disconnected": "", //An empty format will hide the module.
-    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
-},
   "battery": {
     "states": {
       "good": 95,
       "warning": 30,
       "critical": 20
     },
-    "format": "{icon}",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "",
+      "",
+      "",
+      "",
+      ""
     ]
   },
-  "clock": {
-    "format": "{:%a %b. %d %I:%M %p}"
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon} {volume}",
+    "format-muted": "󰝟 {volume}",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "󰘚 {usage}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 1,
+    "format": "󰍛 {percentage}%",
+    "max-length": 15
+  },
+  "network": {
+    "interval": 2,
+    "format-wifi": "{icon} {essid} ↓ {bandwidthDownBytes}",
+    "format-ethernet": "󰈀 ↓ {bandwidthDownBytes}",
+    "format-disconnected": "",
+    "format-icons": [
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
   },
   "custom/notification": {
     "tooltip": true,
@@ -101,5 +136,8 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "tray": {
+    "spacing": 10
   }
 }
