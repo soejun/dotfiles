@@ -42,6 +42,8 @@ link config/fish/config.fish "${HOME}/.config/fish/config.fish"
 # Qt theming (dolphin)
 link config/qt/qt5ct.conf "${HOME}/.config/qt5ct/qt5ct.conf"
 link config/qt/qt6ct.conf "${HOME}/.config/qt6ct/qt6ct.conf"
+# KColorScheme palette for KDE apps (Dolphin) — qt6ct alone can't theme them
+link config/qt/kdeglobals  "${HOME}/.config/kdeglobals"
 
 # Kitty: whole config dir (brings themes/), then per-OS file -> kitty.conf
 link config/kitty "${HOME}/.config/kitty"
