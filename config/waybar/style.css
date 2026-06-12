@@ -47,8 +47,6 @@ window#waybar.hidden {
 #battery,
 #pulseaudio,
 #temperature,
-#cpu,
-#memory,
 #network,
 #mode,
 #custom-notification,
@@ -121,14 +119,6 @@ window#waybar.empty #window {
 
 #temperature.critical {
   color: @red;
-}
-
-#cpu {
-  color: @magenta;
-}
-
-#memory {
-  color: @green;
 }
 
 #network {

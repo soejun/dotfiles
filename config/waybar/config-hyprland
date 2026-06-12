@@ -15,8 +15,6 @@
     "battery",
     "pulseaudio",
     "temperature",
-    "cpu",
-    "memory",
     "network",
     "custom/notification",
     "tray"
@@ -79,20 +77,10 @@
       ""
     ]
   },
-  "cpu": {
-    "interval": 1,
-    "format": "󰘚 {usage}%",
-    "max-length": 10
-  },
-  "memory": {
-    "interval": 1,
-    "format": "󰍛 {percentage}%",
-    "max-length": 15
-  },
   "network": {
     "interval": 2,
-    "format-wifi": "{icon} {essid} ↓ {bandwidthDownBytes}",
-    "format-ethernet": "󰈀 ↓ {bandwidthDownBytes}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
     "format-disconnected": "",
     "format-icons": [
       "󰤟",
