@@ -212,6 +212,22 @@ Each phase = one atomic commit (message <60 chars). Verify before committing.
 
 After all phases: offer to merge `hyprland-cachyos` (PR, matching your workflow).
 
+## Future Work (Out of Scope)
+
+The symlink scripts (`scripts/*-symlink.sh`) are sufficient for now, but a more
+robust management layer is the intended destination — noted here so the symlink
+approach is understood as an interim step, not the end state:
+
+- **chezmoi** — templated, cross-machine dotfile management with per-host
+  variation (the machine-specific `monitors.conf`, Debian-vs-CachyOS tool sets)
+  and secret handling. Would replace the hand-rolled symlink scripts.
+- **ansible** — optional provisioning layer above chezmoi for the imperative
+  bits symlinks can't cover: package installation (pacman/AUR/apt), enabling
+  systemd user services, and one-shot system setup — making a fresh machine
+  reproducible end to end.
+
+Neither is part of this implementation.
+
 ## Out of Scope / Risks
 
 - **Out of scope:** Debian/Sway configs (untouched); multi-monitor (laptop is
