@@ -141,11 +141,11 @@ input "type:touchpad" {
 }
 
 input "2867:4181:Contour_Design_UNIMOUSE" {
-    natural_scroll enabled
+    natural_scroll disabled
 }
 
 input "1133:45088:MX_Vertical_Mouse" {
-  natural_scroll enabled
+  natural_scroll disabled
 }
 
 # Disable the middle mouse button action to prevent it from being overridden.
