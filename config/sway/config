@@ -196,6 +196,7 @@ bindsym Scroll_Lock exec ~/.config/sway/utils/lock.sh
 
 ## Moving Around:
 
+# hjkl
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -206,6 +207,19 @@ bindsym $mod+Shift+$left  move left
 bindsym $mod+Shift+$down  move down
 bindsym $mod+Shift+$up  move up
 bindsym $mod+Shift+$right  move right
+
+# arrow keys
+
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
+
+
+bindsym $mod+Shift+left  move left
+bindsym $mod+Shift+down  move down
+bindsym $mod+Shift+up  move up
+bindsym $mod+Shift+right  move right
 
 # Workspaces:
 bindsym $mod+1 workspace number 1
